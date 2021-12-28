@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.LoginActivity">
+
+    <com.rfid.pdaapp.views.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:title="登录" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/bg_white_t70_5above"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.rfid.pdaapp.views.ClearEditText
+            android:id="@+id/account_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_line_gray_below"
+            android:drawableLeft="@mipmap/account_icon_false"
+            android:drawablePadding="10dp"
+            android:hint="输入您的账号"
+            android:inputType="textVisiblePassword"
+            android:padding="15dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/color_theme"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/dp_normal" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/bg_white_t70_5below"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_line_gray_below"
+            android:drawableLeft="@mipmap/password_icon_false"
+            android:drawablePadding="10dp"
+            android:hint="输入您的密码"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/color_theme"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/dp_normal" />
+
+        <ImageView
+            android:id="@+id/iv_password"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/close_eye" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/shape_theme_20"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_middle_2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="V1.2.0"
+        android:textColor="@color/gray_49"
+        android:textSize="@dimen/dp_middle_2" />
+</LinearLayout>

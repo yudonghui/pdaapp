@@ -2,7 +2,7 @@ package com.rfid.pdaapp.utils;
 
 import android.os.Environment;
 
-import com.rfid.mvp_retrofit.MyApplication;
+import com.rfid.pdaapp.MyApplication;
 
 import java.io.File;
 import java.io.FileNotFoundException;

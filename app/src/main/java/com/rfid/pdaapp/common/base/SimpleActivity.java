@@ -3,11 +3,18 @@ package com.rfid.pdaapp.common.base;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.jaeger.library.StatusBarUtil;
+import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.NetBroadcastReceiver;
+import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.LogUtils;
 import com.rfid.pdaapp.utils.NetWorkUtils;
 
@@ -31,9 +38,11 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initStatusBar();
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
+        init();
         //动态接受网络变化的广播接收器
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
@@ -41,7 +50,48 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
         registerReceiver(mNetBroadcastReceiver, intentFilter);
     }
 
+    protected void initStatusBar() {
+        StatusBarUtil.setColor(this, ContextCompat.getColor(SimpleActivity.this, R.color.color_theme), 0);
+    }
+
+    /**
+     * 判断是否平板设备
+     *
+     * @return true:平板,false:手机
+     */
+    private boolean isTabletDevice() {
+        return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
     protected abstract void init();
+
+    public boolean dispatchTouchEvent(MotionEvent ev, boolean isTounch) {
+        if (isTounch) {
+            //监控触摸事件，点击文本框外部收起键盘
+            if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+                View v = getCurrentFocus();
+                if (CommonUtil.isShouldHideInput(v, ev, 0)) {
+                    CommonUtil.hideSoftInput(v.getWindowToken(), this);
+                    onHideSoftInput();
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return dispatchTouchEvent(ev, true);
+    }
+
+    /**
+     *
+     */
+    public void onHideSoftInput() {
+        LogUtils.e("收起键盘");
+
+    }
 
     /**
      * 通过Class跳转界面
