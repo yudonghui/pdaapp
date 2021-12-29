@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rfid.pdaapp.utils.DisplayUtil;
+
 /**
  * @ author yudonghui
  * @ date 2017/4/6
@@ -67,6 +69,8 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
      * 自定义分割线
      *
      * @param orientation   列表方向
+     *                      LinearLayoutManager.HORIZONTAL 是在每个条目的 右边 和 底部 添加分隔线
+     *                      LinearLayoutManager.VERTICAL 是在每个条目的 底部添加分隔线
      * @param dividerHeight 分割线高度
      * @param dividerColor  分割线颜色
      */
@@ -77,7 +81,7 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
         mOrientation = orientation;
         if (dividerHeight != -100) {
             //分割线高度
-            mPaintDividerLength = dividerHeight;
+            mPaintDividerLength = DisplayUtil.dp2px(dividerHeight);
         }
         //创建特定画笔
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

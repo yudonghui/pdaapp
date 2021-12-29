@@ -1,16 +1,14 @@
 package com.rfid.pdaapp.activity;
 
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
-import com.rfid.pdaapp.common.RecyclerViewDivider;
+import com.rfid.pdaapp.common.SpaceItemDecoration;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.entitys.HomeEntity;
-import com.rfid.pdaapp.utils.DisplayUtil;
 import com.rfid.pdaapp.utils.Strings;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -22,6 +20,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rv_home)
     RecyclerView rvHome;
+    @BindView(R.id.refrashlayout)
+    SmartRefreshLayout refrashlayout;
     private CommonAdapter<HomeEntity> mHomeAdapter;
     private ArrayList<HomeEntity> mHomeList = new ArrayList<>();
 
@@ -32,10 +32,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
-        rvHome.setLayoutManager(gridLayoutManager);
-        rvHome.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, DisplayUtil.dp2px(10), ContextCompat.getColor(mContext, R.color.transparent)));
-       // rvHome.addItemDecoration(new MyItemDecoration());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+        rvHome.setLayoutManager(linearLayoutManager);
+        //rvHome.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.VERTICAL,10,ContextCompat.getColor(mContext,R.color.gray_65)));
+       /* GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
+        rvHome.setLayoutManager(gridLayoutManager);*/
+        // rvHome.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 10, ContextCompat.getColor(mContext, R.color.transparent)));
+        rvHome.addItemDecoration(new SpaceItemDecoration(10));
         mHomeAdapter = new CommonAdapter<HomeEntity>(mContext, R.layout.item_home, mHomeList) {
 
             @Override
