@@ -9,10 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import com.jaeger.library.StatusBarUtil;
-import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.NetBroadcastReceiver;
 import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.LogUtils;
@@ -51,7 +48,7 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
     }
 
     protected void initStatusBar() {
-        StatusBarUtil.setColor(this, ContextCompat.getColor(SimpleActivity.this, R.color.color_theme), 0);
+       // StatusBarUtil.setColor(this, ContextCompat.getColor(SimpleActivity.this, R.color.color_theme), 0);
     }
 
     /**

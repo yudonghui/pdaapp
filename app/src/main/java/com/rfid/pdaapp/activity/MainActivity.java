@@ -1,6 +1,8 @@
 package com.rfid.pdaapp.activity;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
+import android.view.View;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
@@ -32,18 +34,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
-        rvHome.setLayoutManager(linearLayoutManager);
-        //rvHome.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.VERTICAL,10,ContextCompat.getColor(mContext,R.color.gray_65)));
-       /* GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
-        rvHome.setLayoutManager(gridLayoutManager);*/
-        // rvHome.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 10, ContextCompat.getColor(mContext, R.color.transparent)));
-        rvHome.addItemDecoration(new SpaceItemDecoration(10));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext,2);
+        rvHome.setLayoutManager(gridLayoutManager);
+        rvHome.addItemDecoration(new SpaceItemDecoration(10, 10));
         mHomeAdapter = new CommonAdapter<HomeEntity>(mContext, R.layout.item_home, mHomeList) {
 
             @Override
             protected void convert(ViewHolder holder, HomeEntity homeEntity, int position) {
                 holder.setText(R.id.tv_content, Strings.getString(homeEntity.getContent()));
+                holder.setOnClickListener(R.id.tv_content, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(StockActivity.class);
+                    }
+                });
             }
         };
         rvHome.setAdapter(mHomeAdapter);
@@ -51,7 +55,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initData() {
-        mHomeList.add(new HomeEntity("预约管理"));
+        mHomeList.add(new HomeEntity("库存查询"));
         mHomeList.add(new HomeEntity("叫号管理"));
         mHomeList.add(new HomeEntity("收费单"));
         mHomeList.add(new HomeEntity("建档"));

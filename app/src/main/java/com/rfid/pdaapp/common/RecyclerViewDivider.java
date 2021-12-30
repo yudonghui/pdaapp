@@ -74,7 +74,7 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
      * @param dividerHeight 分割线高度
      * @param dividerColor  分割线颜色
      */
-    public RecyclerViewDivider(int orientation, int dividerHeight, int dividerColor) {
+    public RecyclerViewDivider(int orientation, double dividerHeight, int dividerColor) {
         if (orientation != LinearLayoutManager.VERTICAL && orientation != LinearLayoutManager.HORIZONTAL) {
             throw new IllegalArgumentException("请输入正确的参数！");
         }

@@ -75,9 +75,9 @@ public class TitleBar extends LinearLayout {
         init(attrs, defStyleAttr);
     }
 
-    private int default_bg = getResources().getColor(R.color.color_theme);
-    private int default_title_color = getResources().getColor(R.color.white);
-    private int default_right_text_color = getResources().getColor(R.color.white);
+    private int default_bg = getResources().getColor(R.color.white);
+    private int default_title_color = getResources().getColor(R.color.black);
+    private int default_right_text_color = getResources().getColor(R.color.black);
     private int backgroundColor = default_bg;//标题颜色，默认白色
     private int titleColor = default_title_color;//标题颜色，默认白色
     private int rightTextColor = default_right_text_color;//右边文字的颜色，默认白色

@@ -12,13 +12,14 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:visibility="gone"
         app:title="登录" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/bg_white_t70_5above"
         android:gravity="center_vertical"
