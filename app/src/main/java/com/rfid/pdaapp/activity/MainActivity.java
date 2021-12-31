@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
                 holder.setOnClickListener(R.id.tv_content, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(StockActivity.class);
+                        startActivity(StockFormActivity.class);
                     }
                 });
             }

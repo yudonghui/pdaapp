@@ -9,6 +9,9 @@ import android.widget.TextView;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.base.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 

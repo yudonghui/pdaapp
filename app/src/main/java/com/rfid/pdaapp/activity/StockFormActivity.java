@@ -16,6 +16,8 @@ import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,6 +38,7 @@ public class StockFormActivity extends BaseActivity {
     TextView tvBackMain;
     ArrayList<StockEntity> mStockList = new ArrayList<>();
     private CommonAdapter<StockEntity> mStockAdapter;
+    private String[] mFliterList = {"a", "b","c"};
 
     @Override
     protected int getLayoutId() {
@@ -46,6 +49,14 @@ public class StockFormActivity extends BaseActivity {
     protected void init() {
         initAdapter();
         initData();
+        List<List<Object>> list = new ArrayList<>();
+        List<Object> e = new ArrayList<>();
+        e.add("123");
+        e.add(98);
+        e.add("87");
+        list.add(e);
+        List<Map<String, Object>> listMap = Strings.getListMap(list, mFliterList);
+
     }
 
 

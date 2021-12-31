@@ -5,6 +5,11 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class Strings {
     public static String getString(String string) {
@@ -144,5 +149,44 @@ public class Strings {
         } else {
             return aint + "";
         }
+    }
+
+    public static String getStrByList(List<String> list) {
+        if (list == null || list.size() == 0) return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            stringBuilder.append(list.get(i) + ",");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder.toString();
+    }
+
+    public static String getStrByArray(String[] array) {
+        if (array == null || array.length == 0) return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            stringBuilder.append(array[i] + ",");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder.toString();
+    }
+
+    public static List<Map<String, Object>> getListMap(List<List<Object>> list, String[] array) {
+        if (list == null || array == null) return new ArrayList<>();
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            mapList.add(getMap(list.get(i), array));
+        }
+        return mapList;
+    }
+
+    public static Map<String, Object> getMap(List<Object> list, String[] array) {
+        if (list == null || array == null) return new HashMap<>();
+        int total = list.size() > array.length ? array.length : list.size();
+        HashMap<String, Object> map = new HashMap<>();
+        for (int i = 0; i < total; i++) {
+            map.put(array[i], list.get(i));
+        }
+        return map;
     }
 }
