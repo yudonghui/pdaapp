@@ -26,7 +26,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HttpClient {
-    private static String BASE_URL = "http://" + "ip" + "/";//统一地址
+    private static String BASE_URL = "http://47.101.192.134:8090/";//统一地址
     private static ServersApi serversApi = null;
     public static long timeOut = 30000;//连接超时,30秒
 

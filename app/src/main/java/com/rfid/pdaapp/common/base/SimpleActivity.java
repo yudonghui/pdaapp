@@ -15,8 +15,12 @@ import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.LogUtils;
 import com.rfid.pdaapp.utils.NetWorkUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import retrofit2.Call;
 
 /**
  * Created by ydh on 2021/12/24
@@ -31,6 +35,11 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
     private int netMobile;
 
     protected abstract int getLayoutId();
+
+    /**
+     * 管理所有的网络请求
+     */
+    public List<Call> mNetWorkList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +57,7 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
     }
 
     protected void initStatusBar() {
-       // StatusBarUtil.setColor(this, ContextCompat.getColor(SimpleActivity.this, R.color.color_theme), 0);
+        // StatusBarUtil.setColor(this, ContextCompat.getColor(SimpleActivity.this, R.color.color_theme), 0);
     }
 
     /**
@@ -191,7 +200,16 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
     protected void onDestroy() {
         LogUtils.e("生命周期：onDestroy");
         unregisterReceiver(mNetBroadcastReceiver);
-        mUnbinder.unbind();
+        if (mUnbinder != null)
+            mUnbinder.unbind();
+        try {
+            for (int i = 0; i < mNetWorkList.size(); i++) {
+                Call call = mNetWorkList.get(i);
+                call.cancel();
+            }
+        } catch (Exception e) {
+
+        }
         super.onDestroy();
     }
 }

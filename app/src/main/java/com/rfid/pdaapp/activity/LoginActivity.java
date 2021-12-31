@@ -11,11 +11,19 @@ import android.widget.TextView;
 import com.rfid.pdaapp.BuildConfig;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.base.BaseActivity;
+import com.rfid.pdaapp.common.network.HttpClient;
+import com.rfid.pdaapp.entitys.LoginEntity;
+import com.rfid.pdaapp.utils.LogUtils;
 import com.rfid.pdaapp.views.ClearEditText;
 import com.rfid.pdaapp.views.TitleBar;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity {
 
@@ -64,8 +72,30 @@ public class LoginActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_login:
-                startActivity(MainActivity.class);
+               // startActivity(MainActivity.class);
+                login();
                 break;
         }
+    }
+
+    private void login() {
+        HashMap<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("acctID", "61b9b54d631462");
+        paramsMap.put("username", "admin");
+        paramsMap.put("password", "123456");
+        paramsMap.put("lcid", "2052");
+        Call<LoginEntity> call = HttpClient.getHttpApi().login(paramsMap);
+        mNetWorkList.add(call);
+        call.enqueue(new Callback<LoginEntity>() {
+            @Override
+            public void onResponse(Call<LoginEntity> call, Response<LoginEntity> response) {
+                LogUtils.e("成功");
+            }
+
+            @Override
+            public void onFailure(Call<LoginEntity> call, Throwable t) {
+                LogUtils.e("失败");
+            }
+        });
     }
 }

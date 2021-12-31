@@ -24,10 +24,14 @@ import com.rfid.pdaapp.dialogs.HisDialog;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+
 /**
  * Created by ydh on 2021/12/24
  */
 public abstract class BaseActivity extends SimpleActivity {
+
+
     //申请权限之后需要执行的方法。需要的时候再重写
     public void permissonExcute(int requestCode) {
     }

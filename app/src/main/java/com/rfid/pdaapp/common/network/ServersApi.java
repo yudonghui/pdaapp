@@ -1,19 +1,29 @@
 package com.rfid.pdaapp.common.network;
 
-import okhttp3.RequestBody;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
+import com.rfid.pdaapp.entitys.LoginEntity;
+
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 /**
  * Created by ydh on 2021/12/24
  */
 public interface ServersApi {
     //登录
-  /*  @POST("mylike-crm/api/user/login.do")
-    Call<BaseEntity<TokenEntity>> getOldLogin(@Body RequestBody body);
 
-    @GET("mylike-crm/api/outbound/getBasDomainList.do")
-    Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);*/
+    @FormUrlEncoded
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc")
+    Call<LoginEntity> login(@FieldMap Map<String, String> paramsMap);
+
+   /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
+    Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);
+
+  //判断是否客户是否出院了
+    @POST("his-api/v1.0/zy/getIsInHos")
+    Call<BaseNewEntity> judgeIsLeaveHospital(@Body RequestBody body);
+    */
 }
