@@ -1,6 +1,7 @@
 package com.rfid.pdaapp.activity;
 
 import android.Manifest;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 
 import com.rfid.pdaapp.BuildConfig;
 import com.rfid.pdaapp.R;
+import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.common.network.HttpClient;
 import com.rfid.pdaapp.entitys.LoginEntity;
+import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.LogUtils;
 import com.rfid.pdaapp.views.ClearEditText;
 import com.rfid.pdaapp.views.TitleBar;
@@ -48,12 +51,18 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        requestPermission(new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA
-        }, 1);
-        tvVersion.setText("v " + BuildConfig.VERSION_NAME);
+        if (TextUtils.isEmpty(SPUtils.getCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID))) {
+            requestPermission(new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+            }, 1);
+            tvVersion.setText("v " + BuildConfig.VERSION_NAME);
+        } else {
+            startActivity(MainActivity.class);
+            finish();
+        }
+
     }
 
 
@@ -72,29 +81,53 @@ public class LoginActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_login:
-               // startActivity(MainActivity.class);
+                // startActivity(MainActivity.class);
                 login();
                 break;
         }
     }
 
     private void login() {
+        String username = accountEdit.getText().toString();
+        String password = passwordEdit.getText().toString();
+        if (TextUtils.isEmpty(username)) {
+            CommonUtil.showToast("请输入账户");
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            CommonUtil.showToast("请输入密码");
+            return;
+        }
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("acctID", "61b9b54d631462");
-        paramsMap.put("username", "admin");
-        paramsMap.put("password", "123456");
+        paramsMap.put("username", username);
+        paramsMap.put("password", password);
         paramsMap.put("lcid", "2052");
         Call<LoginEntity> call = HttpClient.getHttpApi().login(paramsMap);
         mNetWorkList.add(call);
         call.enqueue(new Callback<LoginEntity>() {
             @Override
             public void onResponse(Call<LoginEntity> call, Response<LoginEntity> response) {
-                LogUtils.e("成功");
+                if (response != null && response.isSuccessful() && response.body() != null) {
+                    LoginEntity body = response.body();
+                    int loginResultType = body.getLoginResultType();
+                    if (loginResultType == 1) {
+                        SPUtils.setCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID, body.getKDSVCSessionId());
+                        startActivity(MainActivity.class);
+                        finish();
+                    } else if (loginResultType == 0) {
+                        CommonUtil.showToast("用户或密码错误");
+                    } else {
+                        CommonUtil.showToast(body.getMessage());
+                    }
+                } else {
+                    CommonUtil.showToast("登录失败");
+                }
             }
 
             @Override
             public void onFailure(Call<LoginEntity> call, Throwable t) {
-                LogUtils.e("失败");
+                CommonUtil.showToast("登录失败");
             }
         });
     }

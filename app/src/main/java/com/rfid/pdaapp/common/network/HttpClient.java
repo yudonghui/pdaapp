@@ -43,7 +43,7 @@ public class HttpClient {
                     if (message.contains("trace-id")) {
                         LogUtils.e("返回结果: " + message);
                     }
-                    if ((message.contains("resultCode") && message.contains("resultMsg")) || (message.contains("code") && message.contains("msg"))) {
+                    if (message.startsWith("[[")) {
                         // LogUtils.e("请求结果" + message);
                         LogUtils.e("请求结果" + message);
                     } else if (message.contains("-->") && message.contains("http://")) {

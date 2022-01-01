@@ -8,19 +8,26 @@ import java.util.List;
 public class LoginEntity {
 
     /**
-     * Message : null
-     * MessageCode : CheckPasswordPolicy
-     * LoginResultType : 1
-     * Context : {"UserLocale":"zh-CN","LogLocale":"zh-CN","DBid":"61b9b54d631462","DatabaseType":3,"SessionId":"vfrejcb0ud3u13etosahmonu","UseLanguages":[{"LocaleId":2052,"LocaleName":"中文(简体)","Alias":"CN","LicenseType":0}],"UserId":317035,"UserName":"admin","CustomName":"江苏哈芙琳服装有限公司","DisplayVersion":"7.7.2217.16","DataCenterName":"配送评估","UserToken":"6ce5e3c5-04b0-4033-a56e-49f3b37c3484","CurrentOrganizationInfo":{"ID":102601,"AcctOrgType":"2","Name":"生产事业部","FunctionIds":[101,102,103,104,107,108,109,110,111,112,113,114,115]},"IsCH_ZH_AutoTrans":false,"ClientType":32,"WeiboAuthInfo":{"WeiboUrl":null,"NetWorkID":null,"CompanyNetworkID":null,"Account":" @","AppKey":"FkdTqJiNeCQC0ugp","AppSecret":"yCP3ucK2IQUm2D3heHxiarq1RJZwfcnKullRSMOIEM","TokenKey":" ","TokenSecret":" ","Verify":null,"CallbackUrl":null,"UserId":" ","Charset":{"BodyName":"utf-8","EncodingName":"Unicode (UTF-8)","HeaderName":"utf-8","WebName":"utf-8","WindowsCodePage":1200,"IsBrowserDisplay":true,"IsBrowserSave":true,"IsMailNewsDisplay":true,"IsMailNewsSave":true,"IsSingleByte":false,"EncoderFallback":{"DefaultString":"�","MaxCharCount":1},"DecoderFallback":{"DefaultString":"�","MaxCharCount":1},"IsReadOnly":true,"CodePage":65001}},"UTimeZone":{"OffsetTicks":288000000000,"StandardName":"(UTC+08:00)北京，重庆，香港特别行政区，乌鲁木齐","Id":230,"Number":"1078_SYS","CanBeUsed":true},"STimeZone":{"OffsetTicks":288000000000,"StandardName":"(UTC+08:00)北京，重庆，香港特别行政区，乌鲁木齐","Id":230,"Number":"1078_SYS","CanBeUsed":true},"GDCID":"","Gsid":null,"TRLevel":0,"ProductEdition":0,"DataCenterNumber":"配送评估"}
-     * KDSVCSessionId : 2f0e57e6-7a30-4a66-88a5-0ac05abed728
-     * FormId : null
-     * RedirectFormParam : null
-     * FormInputObject : null
-     * ErrorStackTrace : null
-     * Lcid : 0
-     * AccessToken : null
-     * KdAccessResult : null
-     * IsSuccessByAPI : true
+     *
+     *  LoginResultType
+     *  //激活
+     *  Activation = -7,
+     *  //云通行证未绑定Cloud账号
+     *  EntryCloudUnBind = -6,
+     *  //需要表单处理
+     *  DealWithForm = -5,
+     *  //登录警告
+     *  Wanning = -4,
+     *  //密码验证不通过（强制的）
+     *  PWInvalid_Required = -3,
+     *  //密码验证不通过（可选的）
+     *  PWInvalid_Optional = -2,
+     *  //登录失败
+     *  Failure = -1,
+     *  //用户或密码错误
+     *  PWError = 0,
+     *  //登录成功
+     *  Success = 1
      */
 
     private String Message;

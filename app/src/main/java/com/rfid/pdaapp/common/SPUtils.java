@@ -21,6 +21,7 @@ public class SPUtils {
     //用户信息文件
     public static final String FILE_USER = "cache_user";
     public static final String TOKEN = "token"; //用户token
+    public static final String KD_SESSIONID = "kdservice-sessionid"; //
 
     /**
      * 用于存储String类型的数据

@@ -25,14 +25,14 @@ public class RequestParamInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();
         //表示第一次登陆还没拉取过token
-        if (TextUtils.isEmpty(SPUtils.getCache(SPUtils.FILE_USER, SPUtils.TOKEN))) {
+        if (TextUtils.isEmpty(SPUtils.getCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID))) {
             return chain.proceed(originalRequest.newBuilder().header("Content-type", "application/json;charset=UTF-8").build());//执行登陆的操作
         }
-        String token = SPUtils.getCache(SPUtils.FILE_USER, SPUtils.TOKEN);
-        LogUtils.e("token: " + token);
+        String kdservice_sessionid = SPUtils.getCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID);
+        LogUtils.e("kdservice_sessionid: " + kdservice_sessionid);
         Request authorised = originalRequest.newBuilder()
                 .header("Content-type", "application/json;charset=UTF-8")
-                .header("token", token)
+                .header("kdservice-sessionid", kdservice_sessionid)
                 .header("source", "Android")
                 .build();
 

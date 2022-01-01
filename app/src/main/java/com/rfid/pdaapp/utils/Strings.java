@@ -35,6 +35,13 @@ public class Strings {
         return TextUtils.isEmpty(string) ? "-" : string;
     }
 
+    public static String getStringL(Object string) {
+        if (string == null) return "-";
+        if (string instanceof String)
+            return TextUtils.isEmpty((String) string) ? "-" : (String) string;
+        return "-";
+    }
+
     public static String getStringN(String string) {
         if (TextUtils.isEmpty(string) || "null".equals(string)) {
             return "";

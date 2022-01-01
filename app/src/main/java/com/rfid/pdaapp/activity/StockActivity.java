@@ -1,5 +1,7 @@
 package com.rfid.pdaapp.activity;
 
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.base.BaseActivity;
+import com.rfid.pdaapp.utils.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +55,7 @@ public class StockActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.ll_store_house, R.id.ll_product, R.id.ll_location, R.id.ll_box_no, R.id.tv_clear})
+    @OnClick({R.id.ll_store_house, R.id.ll_product, R.id.ll_location, R.id.ll_box_no, R.id.tv_clear, R.id.tv_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_store_house:
@@ -65,6 +68,16 @@ public class StockActivity extends BaseActivity {
                 break;
             case R.id.tv_clear:
                 etNumber.setText("");
+                break;
+            case R.id.tv_search:
+                String number = etNumber.getText().toString();
+                if (TextUtils.isEmpty(number)) {
+                    CommonUtil.showToast("请输入查询编号");
+                    return;
+                }
+                Bundle bundle = new Bundle();
+                bundle.putString("FMaterialId_FNumber", number);
+                startActivity(StockLocationActivity.class, bundle);
                 break;
         }
     }

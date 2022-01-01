@@ -20,6 +20,7 @@ import com.rfid.pdaapp.common.permission.PermissionListener;
 import com.rfid.pdaapp.common.permission.PermissionSetting;
 import com.rfid.pdaapp.common.permission.PermissionUtils;
 import com.rfid.pdaapp.dialogs.HisDialog;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -182,5 +183,12 @@ public abstract class BaseActivity extends SimpleActivity {
     public void cancelLoadingDialog() {
         if (mLoadingDialog != null && !isFinishing())
             mLoadingDialog.dismiss();
+    }
+
+    public void stopRefresh(SmartRefreshLayout refreshLayout) {
+        if (refreshLayout != null) {
+            refreshLayout.finishRefresh();
+            refreshLayout.finishLoadMore();
+        }
     }
 }

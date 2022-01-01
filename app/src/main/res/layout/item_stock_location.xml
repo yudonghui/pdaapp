@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/tv_fmaterialid_fnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T23456"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+
+        <TextView
+            android:id="@+id/tv_fmaterialname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="啥打法上"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+
+        <TextView
+            android:id="@+id/tv_fmodel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="78"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+    </LinearLayout>
+
+    <View style="@style/divider_line_ver_gray" />
+
+    <TextView
+        android:id="@+id/tv_fauxpropid_ff100004_fname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="165"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_middle_5" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="12"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="12"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="12"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="4_S_A44Z0C2I01"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_middle_5" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext,2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
         rvHome.setLayoutManager(gridLayoutManager);
         rvHome.addItemDecoration(new SpaceItemDecoration(10, 10));
         mHomeAdapter = new CommonAdapter<HomeEntity>(mContext, R.layout.item_home, mHomeList) {
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
                 holder.setOnClickListener(R.id.tv_content, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(StockFormActivity.class);
+                        startActivity(StockActivity.class);
                     }
                 });
             }

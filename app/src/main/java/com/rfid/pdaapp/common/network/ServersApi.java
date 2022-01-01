@@ -2,9 +2,12 @@ package com.rfid.pdaapp.common.network;
 
 import com.rfid.pdaapp.entitys.LoginEntity;
 
+import java.util.List;
 import java.util.Map;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -19,6 +22,8 @@ public interface ServersApi {
     @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc")
     Call<LoginEntity> login(@FieldMap Map<String, String> paramsMap);
 
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc")
+    Call<List<List<Object>>> locationForm(@Body RequestBody body);
    /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
     Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);
 
