@@ -1,5 +1,6 @@
 package com.rfid.pdaapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,14 +9,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.rfid.pdaapp.R;
+import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.utils.CommonUtil;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.rfid.pdaapp.utils.Strings;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class StockActivity extends BaseActivity {
@@ -43,6 +46,14 @@ public class StockActivity extends BaseActivity {
     EditText etNumber;
     @BindView(R.id.tv_clear)
     TextView tvClear;
+    @BindView(R.id.tv_store_house)
+    TextView tvStoreHouse;
+    @BindView(R.id.tv_search)
+    TextView tvSearch;
+    private int type;//0 产品，1库位，3箱号
+    private String fStockId;
+    private String fNumber;
+    private String fName;
 
     @Override
     protected int getLayoutId() {
@@ -59,12 +70,19 @@ public class StockActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_store_house:
+                startActivityForResult(StockIndexActivity.class, Constant.REQUEST_CODE0);
                 break;
             case R.id.ll_product:
+                type = 0;
+                selectType();
                 break;
             case R.id.ll_location:
+                type = 1;
+                selectType();
                 break;
             case R.id.ll_box_no:
+                type = 2;
+                selectType();
                 break;
             case R.id.tv_clear:
                 etNumber.setText("");
@@ -76,9 +94,37 @@ public class StockActivity extends BaseActivity {
                     return;
                 }
                 Bundle bundle = new Bundle();
-                bundle.putString("FMaterialId_FNumber", number);
+                bundle.putString("code", number);
                 startActivity(StockLocationActivity.class, bundle);
                 break;
         }
     }
+
+    private void selectType() {
+        if (type == 0) {
+            ivProduct.setImageResource(R.mipmap.select_icon);
+            ivLocation.setImageResource(R.mipmap.unselect_icon);
+            ivBoxNo.setImageResource(R.mipmap.unselect_icon);
+        } else if (type == 1) {
+            ivProduct.setImageResource(R.mipmap.unselect_icon);
+            ivLocation.setImageResource(R.mipmap.select_icon);
+            ivBoxNo.setImageResource(R.mipmap.unselect_icon);
+        } else {
+            ivProduct.setImageResource(R.mipmap.unselect_icon);
+            ivLocation.setImageResource(R.mipmap.unselect_icon);
+            ivBoxNo.setImageResource(R.mipmap.select_icon);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constant.REQUEST_CODE0 && resultCode == Constant.RESULT_CODE0) {
+            fStockId = data.getStringExtra("FStockId");
+            fNumber = data.getStringExtra("FNumber");
+            fName = data.getStringExtra("FName");
+            tvStoreHouse.setText(Strings.getString(fName));
+        }
+    }
+
 }

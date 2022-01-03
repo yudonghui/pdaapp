@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
@@ -16,14 +17,24 @@ import retrofit2.http.POST;
  * Created by ydh on 2021/12/24
  */
 public interface ServersApi {
-    //登录
 
+    //登录
     @FormUrlEncoded
     @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc")
     Call<LoginEntity> login(@FieldMap Map<String, String> paramsMap);
 
+    //退出登录
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.AuthService.Logout.common.kdsvc")
+    Call<Object> loginQuite(@Body RequestBody body);
+
+    //库存查询
     @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc")
     Call<List<List<Object>>> locationForm(@Body RequestBody body);
+
+    //库存查询 仓库查询
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc")
+    Call<ResponseBody> locationFormStr(@Body RequestBody body);
+
    /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
     Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);
 

@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/gitProject/pdaapp/app/src/main/res/drawable/shape_gray_10.xml" value="0.23541666666666666" />
+        <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_launch.xml" value="0.12239583333333333" />
         <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_login.xml" value="0.24114583333333334" />
-        <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_main.xml" value="0.3536458333333333" />
+        <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_stock.xml" value="0.24114583333333334" />
         <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_stock_form.xml" value="0.13451086956521738" />
+        <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_stock_index.xml" value="0.2" />
         <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_stock_location.xml" value="0.176" />
         <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/activity_test.xml" value="0.12083333333333333" />
+        <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/item_stock_index.xml" value="0.21927083333333333" />
         <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/item_stock_location.xml" value="0.22552083333333334" />
+        <entry key="..\:/gitProject/pdaapp/app/src/main/res/layout/titlebar.xml" value="0.21927083333333333" />
       </map>
     </option>
   </component>

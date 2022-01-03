@@ -30,9 +30,9 @@ android {
     signingConfigs {
         release {
             storeFile file('D:/projectML/mouth/mouth_sign.jks')
-            storePassword "mylike123!@#"
-            keyAlias "his"
-            keyPassword "mylike123!@#"
+            storePassword "pdajks&#"
+            keyAlias "pda"
+            keyPassword "pdajks&#"
         }
     }
     compileOptions {
@@ -87,4 +87,6 @@ dependencies {
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'
+    //通讯录
+    implementation 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
 }

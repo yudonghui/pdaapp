@@ -19,6 +19,18 @@
             android:text="WMS系统"
             android:textColor="@color/white"
             android:textSize="@dimen/dp_big" />
+
+        <TextView
+            android:id="@+id/tv_quite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:text="登出"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_big" />
     </RelativeLayout>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout

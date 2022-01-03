@@ -39,7 +39,10 @@ public class Strings {
         if (string == null) return "-";
         if (string instanceof String)
             return TextUtils.isEmpty((String) string) ? "-" : (String) string;
-        return "-";
+        else if (string instanceof Double) {
+            return (int)(Double.parseDouble(string + "")) + "";
+        }
+        return string.toString();
     }
 
     public static String getStringN(String string) {

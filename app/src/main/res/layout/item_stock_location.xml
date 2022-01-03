@@ -31,7 +31,7 @@
             android:textSize="@dimen/dp_middle_5" />
 
         <TextView
-            android:id="@+id/tv_fmodel"
+            android:id="@+id/tv_fauxpropid_ff100001_fname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="78"
@@ -58,6 +58,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_favbqty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -66,6 +67,7 @@
             android:textSize="@dimen/dp_middle_5" />
 
         <TextView
+            android:id="@+id/tv_fqty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -81,6 +83,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_box_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -89,6 +92,7 @@
             android:textSize="@dimen/dp_middle_5" />
 
         <TextView
+            android:id="@+id/tv_fstocklocid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

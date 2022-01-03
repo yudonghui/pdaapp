@@ -51,18 +51,12 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        if (TextUtils.isEmpty(SPUtils.getCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID))) {
-            requestPermission(new String[]{
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.CAMERA
-            }, 1);
-            tvVersion.setText("v " + BuildConfig.VERSION_NAME);
-        } else {
-            startActivity(MainActivity.class);
-            finish();
-        }
-
+        requestPermission(new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA
+        }, 1);
+        tvVersion.setText("v " + BuildConfig.VERSION_NAME);
     }
 
 
@@ -112,6 +106,8 @@ public class LoginActivity extends BaseActivity {
                     LoginEntity body = response.body();
                     int loginResultType = body.getLoginResultType();
                     if (loginResultType == 1) {
+                        SPUtils.setCache(SPUtils.FILE_ACCOUNT, SPUtils.ACCOUNT, username);
+                        SPUtils.setCache(SPUtils.FILE_ACCOUNT, SPUtils.PASSWORD, password);
                         SPUtils.setCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID, body.getKDSVCSessionId());
                         startActivity(MainActivity.class);
                         finish();
