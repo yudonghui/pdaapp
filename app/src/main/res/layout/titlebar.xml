@@ -3,7 +3,7 @@
     android:id="@+id/rl_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/color_theme">
 
     <ImageView
         android:id="@+id/image_titlebar_back"
@@ -12,7 +12,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
         android:padding="15dp"
-        android:src="@mipmap/back_black_icon" />
+        android:src="@mipmap/back_white_icon" />
 
     <TextView
         android:id="@+id/title"
@@ -24,7 +24,7 @@
         android:gravity="center"
         android:singleLine="true"
         android:text="美莱"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="@dimen/dp_big" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_centerVertical="true"
         android:padding="10dp"
         android:text="注册"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="@dimen/dp_middle_2"
         android:visibility="gone" />
 

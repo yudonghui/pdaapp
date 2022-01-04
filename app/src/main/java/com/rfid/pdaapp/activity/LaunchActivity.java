@@ -35,7 +35,8 @@ public class LaunchActivity extends BaseActivity {
         showLoadingDialog();
         String account = SPUtils.getCache(SPUtils.FILE_ACCOUNT, SPUtils.ACCOUNT);
         String password = SPUtils.getCache(SPUtils.FILE_ACCOUNT, SPUtils.PASSWORD);
-        if (TextUtils.isEmpty(account) || TextUtils.isEmpty(password)) {
+        String kdSessionId = SPUtils.getCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID);
+        if (TextUtils.isEmpty(account) || TextUtils.isEmpty(password) || TextUtils.isEmpty(kdSessionId)) {
             startActivity(LoginActivity.class);
             finish();
         } else {

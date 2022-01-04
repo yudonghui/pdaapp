@@ -20,6 +20,9 @@ import com.rfid.pdaapp.utils.Strings;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 库存查询
+ */
 public class StockActivity extends BaseActivity {
     @BindView(R.id.ll_store_house)
     LinearLayout llStoreHouse;
@@ -50,9 +53,9 @@ public class StockActivity extends BaseActivity {
     @BindView(R.id.tv_search)
     TextView tvSearch;
     private int type;//0 产品，1库位，3箱号
-    private String fStockId;
-    private String fNumber;
-    private String fName;
+    private String fStockId;//仓库id
+    private String fNumber;//仓库编码
+    private String fName;//仓库名称
 
     @Override
     protected int getLayoutId() {
@@ -94,6 +97,8 @@ public class StockActivity extends BaseActivity {
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("code", number);
+                bundle.putInt("type", type);
+                bundle.putString("FStockId_FNumber", fNumber);
                 startActivity(StockLocationActivity.class, bundle);
                 break;
         }

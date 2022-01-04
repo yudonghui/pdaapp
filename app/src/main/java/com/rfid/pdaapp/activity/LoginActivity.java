@@ -75,8 +75,8 @@ public class LoginActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_login:
-                startActivity(HWScanActivity.class);
-               // login();
+                // startActivity(HWScanActivity.class);
+                login();
                 break;
         }
     }

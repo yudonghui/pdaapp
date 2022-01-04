@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
+import com.rfid.pdaapp.activity.change.StockChangeActivity;
+import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.SpaceItemDecoration;
 import com.rfid.pdaapp.common.base.BaseActivity;
@@ -52,11 +54,21 @@ public class MainActivity extends BaseActivity {
 
             @Override
             protected void convert(ViewHolder holder, HomeEntity homeEntity, int position) {
-                holder.setText(R.id.tv_content, Strings.getString(homeEntity.getContent()));
-                holder.setOnClickListener(R.id.tv_content, new View.OnClickListener() {
+                TextView mTvContent = holder.getView(R.id.tv_content);
+                mTvContent.setText(Strings.getString(homeEntity.getContent()));
+                mTvContent.setBackgroundResource(homeEntity.getResId());
+                mTvContent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(StockActivity.class);
+                        switch (homeEntity.getType()) {
+                            case Constant.HOME_KCCX://库位查询
+                                startActivity(StockActivity.class);
+                                break;
+                            case Constant.HOME_KWYK://库位移库
+                                startActivity(StockChangeActivity.class);
+                                break;
+                        }
+
                     }
                 });
             }
@@ -93,7 +105,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initData() {
-        mHomeList.add(new HomeEntity("库存查询"));
+        mHomeList.add(new HomeEntity("库存查询", Constant.HOME_KCCX, R.drawable.shape_theme_10));
+        mHomeList.add(new HomeEntity("库存移库", Constant.HOME_KWYK, R.drawable.shape_green_10));
+       // mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_theme_10));
         mHomeAdapter.notifyDataSetChanged();
     }
 

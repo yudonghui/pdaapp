@@ -76,6 +76,7 @@ public class StockLocationActivity extends BaseActivity {
             "FAUXPROPID.FF100001.FNAME", "FAUXPROPID.FF100004.FNUMBER", "FAUXPROPID.FF100004.FNAME", "FSTOCKNAME", "FLOT.FNUMBER",
             "FSTOCKUNITID.FNAME", "FAVBQTY", "FQTY", "FSTOCKORGID.FNAME", "FOWNERID.FNUMBER", "FOWNERNAME", "FSTOCKLOCID"};
     private String code;
+    private String FStockId_FNumber;//仓库编码
     private List<Map<String, Object>> mLocationList = new ArrayList<>();
     private CommonAdapter<Map<String, Object>> mLocationAdapter;
     private int type;//0 产品，1库位，3箱号
@@ -92,13 +93,14 @@ public class StockLocationActivity extends BaseActivity {
     protected void init(Bundle savedInstanceState) {
         type = getIntent().getIntExtra("type", 0);
         code = getIntent().getStringExtra("code");
+        FStockId_FNumber = getIntent().getStringExtra("FStockId_FNumber");
         tvCode.setText(Strings.getStringL(code));
         if (type == 0) {
-            tvCodeTitle.setText("产品编码");
+            tvCodeTitle.setText("产品编码: ");
         } else if (type == 1) {
-            tvCodeTitle.setText("库位编码");
+            tvCodeTitle.setText("库位编码: ");
         } else {
-            tvCodeTitle.setText("箱子编码");
+            tvCodeTitle.setText("箱子编码: ");
         }
         initAdapter();
         initData();
@@ -220,8 +222,11 @@ public class StockLocationActivity extends BaseActivity {
         map.put("FormId", "STK_Inventory");
         map.put("Limit", Limit);
         map.put("StartRow", StartRow);
-        map.put("FilterString", "FMaterialId.FNumber='" + code + "'");
-        // map.put("FilterString", "FMaterialId.FNumber='" + fMaterialId_fNumber + "'");
+        if (type == 0) {//产品
+            map.put("FilterString", "FMaterialId.FNumber='" + code + "',FStockId_FNumber='" + FStockId_FNumber + "'");
+        } else if (type == 1) {//库位
+            map.put("FilterString", "FSTOCKLOCID='" + code + "'FStockId_FNumber='" + FStockId_FNumber + "'");
+        }
         map.put("OrderString", "FID ASC");
         map.put("FieldKeys", Strings.getStrByArray(mFieldKeys));
         HashMap<String, Object> paramMap = new HashMap<>();

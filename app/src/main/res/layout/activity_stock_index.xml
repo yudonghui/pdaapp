@@ -21,7 +21,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:padding="15dp"
-            android:src="@mipmap/back_black_icon" />
+            android:src="@mipmap/back_white_icon" />
 
         <LinearLayout
             android:layout_width="match_parent"
