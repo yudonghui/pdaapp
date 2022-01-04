@@ -1,10 +1,9 @@
 package com.rfid.pdaapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.os.Bundle;
 import android.text.TextUtils;
+
+import androidx.core.content.ContextCompat;
 
 import com.jaeger.library.StatusBarUtil;
 import com.rfid.pdaapp.R;
@@ -12,7 +11,6 @@ import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.common.network.HttpClient;
 import com.rfid.pdaapp.entitys.LoginEntity;
-import com.rfid.pdaapp.utils.CommonUtil;
 
 import java.util.HashMap;
 
@@ -33,7 +31,7 @@ public class LaunchActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         showLoadingDialog();
         String account = SPUtils.getCache(SPUtils.FILE_ACCOUNT, SPUtils.ACCOUNT);
         String password = SPUtils.getCache(SPUtils.FILE_ACCOUNT, SPUtils.PASSWORD);

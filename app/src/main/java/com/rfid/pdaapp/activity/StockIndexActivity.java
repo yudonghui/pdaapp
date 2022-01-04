@@ -2,6 +2,7 @@ package com.rfid.pdaapp.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -74,7 +75,7 @@ public class StockIndexActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         initAdapter();
         initListener();
         initData();

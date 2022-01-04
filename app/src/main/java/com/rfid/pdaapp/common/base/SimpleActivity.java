@@ -48,7 +48,7 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
-        init();
+        init(savedInstanceState);
         //动态接受网络变化的广播接收器
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
@@ -70,7 +70,7 @@ public abstract class SimpleActivity extends AppCompatActivity implements NetBro
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
-    protected abstract void init();
+    protected abstract void init(Bundle savedInstanceState);
 
     public boolean dispatchTouchEvent(MotionEvent ev, boolean isTounch) {
         if (isTounch) {

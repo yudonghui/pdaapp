@@ -19,6 +19,10 @@ android {
                 includeCompileClasspath = true
             }
         }
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -89,4 +93,6 @@ dependencies {
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'
     //通讯录
     implementation 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
+    //华为扫码功能
+    implementation 'com.huawei.hms:scan:2.2.0.300'
 }

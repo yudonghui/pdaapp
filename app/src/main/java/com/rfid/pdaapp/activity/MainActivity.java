@@ -1,5 +1,6 @@
 package com.rfid.pdaapp.activity;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
         rvHome.setLayoutManager(gridLayoutManager);
         rvHome.addItemDecoration(new SpaceItemDecoration(10, 10));

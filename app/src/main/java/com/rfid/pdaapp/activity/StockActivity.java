@@ -18,7 +18,6 @@ import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.Strings;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class StockActivity extends BaseActivity {
@@ -61,7 +60,7 @@ public class StockActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
 
     }
 

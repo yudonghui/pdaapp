@@ -1,5 +1,6 @@
 package com.rfid.pdaapp;
 
+import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.core.content.ContextCompat;
@@ -52,7 +53,7 @@ public class TestActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle sa) {
         refreshListener();
         scrollListener();
         initAdapter();

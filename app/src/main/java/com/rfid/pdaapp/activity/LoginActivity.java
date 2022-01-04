@@ -1,6 +1,7 @@
 package com.rfid.pdaapp.activity;
 
 import android.Manifest;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -16,7 +17,6 @@ import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.common.network.HttpClient;
 import com.rfid.pdaapp.entitys.LoginEntity;
 import com.rfid.pdaapp.utils.CommonUtil;
-import com.rfid.pdaapp.utils.LogUtils;
 import com.rfid.pdaapp.views.ClearEditText;
 import com.rfid.pdaapp.views.TitleBar;
 
@@ -50,7 +50,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         requestPermission(new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -75,8 +75,8 @@ public class LoginActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_login:
-                // startActivity(MainActivity.class);
-                login();
+                startActivity(HWScanActivity.class);
+               // login();
                 break;
         }
     }

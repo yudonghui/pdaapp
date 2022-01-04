@@ -13,7 +13,6 @@ import com.google.gson.reflect.TypeToken;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.common.network.HttpClient;
-import com.rfid.pdaapp.entitys.ErrorEntity;
 import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.Strings;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -23,17 +22,12 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -95,7 +89,7 @@ public class StockLocationActivity extends BaseActivity {
     private int Limit = 10;
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         type = getIntent().getIntExtra("type", 0);
         code = getIntent().getStringExtra("code");
         tvCode.setText(Strings.getStringL(code));

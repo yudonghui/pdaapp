@@ -1,5 +1,6 @@
 package com.rfid.pdaapp.activity;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ public class StockFormActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         initAdapter();
         initData();
         List<List<Object>> list = new ArrayList<>();
