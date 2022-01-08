@@ -10,10 +10,10 @@ import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * Created by ydh on 2022/1/1
  * 库位移库
  */
 public class StockChangeActivity extends BaseActivity {
@@ -54,14 +54,7 @@ public class StockChangeActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+        
     }
 
     @OnClick({R.id.ll_product, R.id.ll_box, R.id.tv_out_library_scan, R.id.tv_out_box_scan, R.id.tv_in_library_scan, R.id.tv_in_box_scan})
