@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.activity.HWScanActivity;
 import com.rfid.pdaapp.callback.HisDialogInterface;
 import com.rfid.pdaapp.common.Constant;
+import com.rfid.pdaapp.common.RecyclerViewDivider;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.dialogs.HisDialog;
 import com.rfid.pdaapp.utils.Strings;
@@ -64,8 +66,8 @@ public class StockChangeActivity extends BaseActivity {
     TextView tvInBox;
     @BindView(R.id.tv_in_box_scan)
     TextView tvInBoxScan;
-    @BindView(R.id.iv_all)
-    ImageView ivAll;
+    @BindView(R.id.iv_data)
+    ImageView ivData;
     @BindView(R.id.tv_hint1)
     TextView tvHint1;
     @BindView(R.id.tv_hint2)
@@ -92,6 +94,7 @@ public class StockChangeActivity extends BaseActivity {
     TitleBar tvTitle;
     private int operationType = 1;//1单品  2箱子
     private boolean isAll = false;//是否全选
+    private List<Map<String, Object>> mDataList = new ArrayList<>();
     private CommonAdapter<Map<String, Object>> mCommonAdapter;
     private String[] mFieldKeys = {"code", "num"};
 
@@ -105,6 +108,52 @@ public class StockChangeActivity extends BaseActivity {
         initAdapter();
         initListener();
     }
+
+
+    @OnClick({R.id.ll_product, R.id.ll_box, R.id.tv_out_library_scan, R.id.tv_out_box_scan,
+            R.id.tv_in_library_scan, R.id.tv_in_box_scan, R.id.iv_data, R.id.tv_clear, R.id.tv_confirm})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_product://单品
+                operationType = 1;
+                operationType();
+                break;
+            case R.id.ll_box://箱子
+                operationType = 2;
+                operationType();
+                break;
+            case R.id.tv_out_library_scan:
+                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE0);
+                break;
+            case R.id.tv_out_box_scan:
+                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE1);
+                break;
+            case R.id.tv_in_library_scan:
+                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE2);
+                break;
+            case R.id.tv_in_box_scan:
+                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE3);
+                break;
+            case R.id.iv_data:
+                getData();
+                break;
+            case R.id.tv_clear:
+                new HisDialog.Builder().title("提示")
+                        .message("是否确定清除")
+                        .cancel("取消")
+                        .confirm("确认", new HisDialogInterface() {
+                            @Override
+                            public void callBack(View view) {
+
+                            }
+                        })
+                        .build(mContext);
+                break;
+            case R.id.tv_confirm:
+                break;
+        }
+    }
+
 
     private void initListener() {
         tvTitle.setListener(new TitleBar.TextListener() {//全选
@@ -140,53 +189,6 @@ public class StockChangeActivity extends BaseActivity {
         }
         mCommonAdapter.notifyDataSetChanged();
     }
-
-    @OnClick({R.id.ll_product, R.id.ll_box, R.id.tv_out_library_scan, R.id.tv_out_box_scan,
-            R.id.tv_in_library_scan, R.id.tv_in_box_scan, R.id.iv_all, R.id.tv_clear, R.id.tv_confirm})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_product://单品
-                operationType = 1;
-                operationType();
-                break;
-            case R.id.ll_box://箱子
-                operationType = 2;
-                operationType();
-                break;
-            case R.id.tv_out_library_scan:
-                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE0);
-                break;
-            case R.id.tv_out_box_scan:
-                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE1);
-                break;
-            case R.id.tv_in_library_scan:
-                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE2);
-                break;
-            case R.id.tv_in_box_scan:
-                startActivityForResult(HWScanActivity.class, Constant.REQUEST_CODE3);
-                break;
-            case R.id.iv_all:
-                getData();
-                break;
-            case R.id.tv_clear:
-                new HisDialog.Builder().title("提示")
-                        .message("是否确定清除")
-                        .cancel("取消")
-                        .confirm("确认", new HisDialogInterface() {
-                            @Override
-                            public void callBack(View view) {
-
-                            }
-                        })
-                        .build(mContext);
-                break;
-            case R.id.tv_confirm:
-                break;
-        }
-    }
-
-    private List<Map<String, Object>> mDataList = new ArrayList<>();
-
     private void initAdapter() {
         mCommonAdapter = new CommonAdapter<Map<String, Object>>(mContext, R.layout.item_stock_change, mDataList) {
 
@@ -214,6 +216,7 @@ public class StockChangeActivity extends BaseActivity {
             }
         };
         rvData.setLayoutManager(new LinearLayoutManager(mContext));
+        rvData.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 0.5, ContextCompat.getColor(mContext, R.color.color_divider)));
         rvData.setAdapter(mCommonAdapter);
     }
 
@@ -221,12 +224,12 @@ public class StockChangeActivity extends BaseActivity {
 
     private void getData() {
         if (isSelect) {
-            ivAll.setImageResource(R.mipmap.unselect_more_icon);
+            ivData.setImageResource(R.mipmap.unselect_more_icon);
             isSelect = false;
             mDataList.clear();
             mCommonAdapter.notifyDataSetChanged();
         } else {
-            ivAll.setImageResource(R.mipmap.select_more_icon);
+            ivData.setImageResource(R.mipmap.select_more_icon);
             isSelect = true;
             initData();
         }
@@ -234,7 +237,7 @@ public class StockChangeActivity extends BaseActivity {
 
     private void operationType() {
         isAll = false;
-        ivAll.setImageResource(R.mipmap.unselect_more_icon);
+        ivData.setImageResource(R.mipmap.unselect_more_icon);
         isSelect = false;
         mDataList.clear();
         mCommonAdapter.notifyDataSetChanged();
