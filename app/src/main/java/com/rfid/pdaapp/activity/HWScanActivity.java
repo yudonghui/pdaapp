@@ -83,6 +83,7 @@ public class HWScanActivity extends BaseActivity {
         remoteView.onCreate(savedInstanceState);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         rim.addView(remoteView, layoutParams);
+
     }
 
 

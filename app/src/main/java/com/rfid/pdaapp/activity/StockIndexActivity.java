@@ -1,10 +1,14 @@
 package com.rfid.pdaapp.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +29,7 @@ import com.rfid.pdaapp.common.network.HttpClient;
 import com.rfid.pdaapp.entitys.StockIndexEntity;
 import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.Strings;
-import com.rfid.pdaapp.views.ClearEditText;
+import com.rfid.pdaapp.views.TitleSearchBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -41,15 +45,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Created by ydh on 2022/1/11
+ * 仓库列表
+ */
 public class StockIndexActivity extends BaseActivity {
 
-
-    @BindView(R.id.iv_back)
-    ImageView ivBack;
-    @BindView(R.id.search_edit)
-    ClearEditText searchEdit;
-    @BindView(R.id.tv_search)
-    TextView tvSearch;
     @BindView(R.id.rv_stock)
     RecyclerView rvStock;
     @BindView(R.id.refreshLayout)
@@ -58,9 +59,12 @@ public class StockIndexActivity extends BaseActivity {
     IndexBar indexBar;
     @BindView(R.id.tvSideBarHint)
     TextView tvSideBarHint;
+    @BindView(R.id.tv_title)
+    TitleSearchBar tvTitle;
     private LinearLayoutManager mManager;
     private SuspensionDecoration mDecoration;
     private List<StockIndexEntity> mDataList = new ArrayList<>();//列表数据
+    private List<StockIndexEntity> mDataAllList = new ArrayList<>();//列表数据
     private StockIndexAdapter mStockAdapter;
     /**
      * FStockId：仓库id
@@ -88,15 +92,50 @@ public class StockIndexActivity extends BaseActivity {
                 initData();
             }
         });
+        tvTitle.setListener(new TitleSearchBar.TextListener() {
+            @Override
+            public void onClick(TextView textView) {
+                searchData();
+            }
+        });
+        tvTitle.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_SEND) {
+                    InputMethodManager imm = (InputMethodManager) v.getContext()
+                            .getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    searchData();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
-    @OnClick({R.id.iv_back, R.id.tv_search})
+    private void searchData() {
+        String text = tvTitle.getText();
+        mDataList.clear();
+        if (TextUtils.isEmpty(text)) {
+            mDataList.addAll(mDataAllList);
+        } else {
+            for (int i = 0; i < mDataAllList.size(); i++) {
+                String fName = mDataAllList.get(i).getFName();
+                if (fName.contains(text)) {
+                    mDataList.add(mDataAllList.get(i));
+                }
+            }
+        }
+        mStockAdapter.notifyDataSetChanged();
+        indexBar.setmSourceDatas(mDataList).invalidate();
+        mDecoration.setmDatas(mDataList);
+    }
+
+    @OnClick({R.id.iv_back})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
-                break;
-            case R.id.tv_search:
                 break;
         }
     }
@@ -155,6 +194,7 @@ public class StockIndexActivity extends BaseActivity {
                                 return;
                             }
 
+                            mDataAllList.clear();
                             mDataList.clear();
                             for (int i = 0; i < o.size(); i++) {
                                 List<Object> objects = o.get(i);
@@ -162,10 +202,11 @@ public class StockIndexActivity extends BaseActivity {
                                     StockIndexEntity stockIndexEntity = new StockIndexEntity(Strings.getString(objects.get(0)),
                                             Strings.getString(objects.get(1)),
                                             Strings.getString(objects.get(2)));
-                                    mDataList.add(stockIndexEntity);
+                                    mDataAllList.add(stockIndexEntity);
                                 }
                             }
-                            searchEdit.setHint("共" + mDataList.size() + "条");
+                            mDataList.addAll(mDataAllList);
+                            tvTitle.setHint("共" + mDataList.size() + "条");
                             mStockAdapter.notifyDataSetChanged();
                             indexBar.setmSourceDatas(mDataList).invalidate();
                             mDecoration.setmDatas(mDataList);

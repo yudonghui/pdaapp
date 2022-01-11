@@ -67,6 +67,9 @@ public class MainActivity extends BaseActivity {
                             case Constant.HOME_KWYK://库位移库
                                 startActivity(StockChangeActivity.class);
                                 break;
+                            case Constant.HOME_KWTZ://库位调整
+                                startActivity(StockChangeActivity.class);
+                                break;
                         }
 
                     }
@@ -107,7 +110,7 @@ public class MainActivity extends BaseActivity {
     private void initData() {
         mHomeList.add(new HomeEntity("库存查询", Constant.HOME_KCCX, R.drawable.shape_theme_10));
         mHomeList.add(new HomeEntity("库存移库", Constant.HOME_KWYK, R.drawable.shape_green_10));
-       // mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_theme_10));
+        mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_theme_10));
         mHomeAdapter.notifyDataSetChanged();
     }
 

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="background_color" format="color" />
+    <attr name="right_text_color" format="color" />
+    <attr name="right_text" format="string" />
     <declare-styleable name="TitleBar">
-        <attr name="background_color" format="color" />
+        <attr name="background_color" />
         <attr name="title" format="string" />
         <attr name="title_color" format="color" />
-        <attr name="right_text_color" format="color" />
+        <attr name="right_text_color" />
         <attr name="right_image" format="reference" />
         <attr name="right_image_two" format="reference" />
-        <attr name="right_text" format="string" />
+        <attr name="right_text" />
+    </declare-styleable>
+    <declare-styleable name="TitleSearchBar">
+        <attr name="background_color" />
+        <attr name="right_text_color" />
+        <attr name="right_text" />
     </declare-styleable>
 </resources>
