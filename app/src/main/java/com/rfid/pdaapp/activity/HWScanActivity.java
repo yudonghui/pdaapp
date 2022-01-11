@@ -1,13 +1,12 @@
 package com.rfid.pdaapp.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -31,6 +30,7 @@ import com.rfid.pdaapp.utils.DeviceUtils;
 import com.rfid.pdaapp.utils.LogUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -137,8 +137,8 @@ public class HWScanActivity extends BaseActivity {
 
     private void backResult(String result) {
         Intent intent = getIntent();
-        intent.putExtra("result", result);
-        setResult(Activity.RESULT_OK, intent);
+        intent.putExtra("scanResult", result);
+        setResult(Constant.RESULT_CODE0, intent);
         finish();
     }
 
@@ -179,11 +179,15 @@ public class HWScanActivity extends BaseActivity {
             // data是Intent类型，data.getData是待扫描的条码图片Uri。
             Bitmap bitmap = null;
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+               // bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                bitmap = BitmapFactory.decodeStream(inputStream);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            HmsScanAnalyzerOptions options = new HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE, HmsScan.DATAMATRIX_SCAN_TYPE).setPhotoMode(true).create();
+            HmsScanAnalyzerOptions options = new HmsScanAnalyzerOptions.Creator()
+                    .setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE, HmsScan.DATAMATRIX_SCAN_TYPE)
+                    .setPhotoMode(true).create();
             HmsScan[] hmsScans = ScanUtil.decodeWithBitmap(this, bitmap, options);
             // 处理扫码结果
             if (hmsScans != null && hmsScans.length > 0) {

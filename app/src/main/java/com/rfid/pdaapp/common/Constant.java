@@ -4,9 +4,13 @@ public interface Constant {
     int REQUEST_CODE0 = 100;
     int REQUEST_CODE1 = 101;
     int REQUEST_CODE2 = 102;
+    int REQUEST_CODE3 = 103;
+    int REQUEST_CODE4 = 104;
     int RESULT_CODE0 = 200;
     int RESULT_CODE1 = 201;
     int RESULT_CODE2 = 202;
+    int RESULT_CODE3 = 203;
+    int RESULT_CODE4 = 204;
     /**
      * 首页
      */

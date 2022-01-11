@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
                                 startActivity(StockChangeActivity.class);
                                 break;
                             case Constant.HOME_KWTZ://库位调整
-                                startActivity(StockChangeActivity.class);
+                                startActivity(StockAdjustActivity.class);
                                 break;
                         }
 

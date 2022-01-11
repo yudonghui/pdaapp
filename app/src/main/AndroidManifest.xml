@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rfid.pdaapp">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -16,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.puthouse.WarehouseActivity"></activity>
+        <activity android:name=".activity.StockAdjustActivity"></activity>
+        <activity android:name=".activity.puthouse.WarehouseActivity" />
         <activity
             android:name=".activity.change.StockChangeActivity"
             android:exported="false" />

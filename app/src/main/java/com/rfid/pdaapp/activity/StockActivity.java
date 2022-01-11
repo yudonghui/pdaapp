@@ -23,6 +23,7 @@ import butterknife.OnClick;
 /**
  * 库存查询
  */
+
 public class StockActivity extends BaseActivity {
     @BindView(R.id.ll_store_house)
     LinearLayout llStoreHouse;
