@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.StockAdjustActivity"></activity>
+        <activity android:name=".activity.puthouse.BigGoodsInActivity"></activity>
+        <activity android:name=".activity.StockAdjustActivity" />
         <activity android:name=".activity.puthouse.WarehouseActivity" />
         <activity
             android:name=".activity.change.StockChangeActivity"

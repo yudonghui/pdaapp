@@ -7,13 +7,13 @@ import com.rfid.pdaapp.common.base.BaseActivity;
 
 /**
  * Created by ydh on 2022/1/12
- * 收货入库
+ * 大货退货入库
  */
-public class WarehouseActivity extends BaseActivity {
+public class BigGoodsInActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_warehouse;
+        return R.layout.activity_big_goods_in;
     }
 
     @Override

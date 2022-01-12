@@ -17,4 +17,5 @@ public interface Constant {
     int HOME_KCCX = 0;//库存查询
     int HOME_KWYK = 1;//库位移位
     int HOME_KWTZ = 2;//库位调整
+    int HOME_SHRK = 3;//收货入库
 }
