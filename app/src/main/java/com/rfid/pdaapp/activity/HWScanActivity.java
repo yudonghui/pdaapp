@@ -38,8 +38,6 @@ public class HWScanActivity extends BaseActivity {
 
     @BindView(R.id.rim)
     FrameLayout rim;
-    @BindView(R.id.scan_area)
-    ImageView scanArea;
     @BindView(R.id.tv_open_hint)
     TextView tvOpenHint;
     @BindView(R.id.iv_open_light)

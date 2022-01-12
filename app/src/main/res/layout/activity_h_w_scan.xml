@@ -20,11 +20,9 @@
         android:orientation="vertical">
 
 
-        <ImageView
-            android:id="@+id/scan_area"
+        <com.rfid.pdaapp.views.ViewfinderView
             android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:background="@drawable/cloors" />
+            android:layout_height="240dp" />
 
         <TextView
             android:layout_width="240dp"
