@@ -25,7 +25,6 @@ import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.base.BaseActivity;
-import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.DeviceUtils;
 import com.rfid.pdaapp.utils.LogUtils;
 
@@ -189,10 +188,9 @@ public class HWScanActivity extends BaseActivity {
                     .setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE, HmsScan.DATAMATRIX_SCAN_TYPE)
                     .setPhotoMode(true).create();
             HmsScan[] hmsScans = ScanUtil.decodeWithBitmap(this, bitmap, options);
-            // 处理扫码结果
+            // 处理识别二维码
             if (hmsScans != null && hmsScans.length > 0) {
-                // 展示扫码结果
-                CommonUtil.showToast(hmsScans.toString());
+                backResult(hmsScans[0].getOriginalValue());
             }
         }
     }

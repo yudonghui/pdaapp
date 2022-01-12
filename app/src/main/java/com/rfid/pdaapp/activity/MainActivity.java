@@ -1,5 +1,6 @@
 package com.rfid.pdaapp.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -47,6 +48,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
+        requestPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
         rvHome.setLayoutManager(gridLayoutManager);
         rvHome.addItemDecoration(new SpaceItemDecoration(10, 10));
