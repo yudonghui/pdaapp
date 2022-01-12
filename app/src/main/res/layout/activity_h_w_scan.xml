@@ -45,14 +45,33 @@
 
         <ImageView
             android:id="@+id/iv_open_light"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_below="@+id/scan_area"
             android:layout_centerHorizontal="true"
             android:layout_gravity="bottom|center_horizontal"
-            android:padding="15dp"
+            android:padding="12dp"
             android:src="@mipmap/flash_light" />
 
+        <ImageView
+            android:id="@+id/iv_handle_input"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/scan_area"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/shape_theme_circle"
+            android:padding="9dp"
+            android:src="@mipmap/handle_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="手动输入查找"
+            android:textColor="@color/color_theme"
+            android:textSize="@dimen/dp_normal" />
     </LinearLayout>
 
     <com.rfid.pdaapp.views.TitleBar

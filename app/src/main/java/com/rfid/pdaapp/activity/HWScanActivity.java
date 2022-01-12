@@ -25,6 +25,7 @@ import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.base.BaseActivity;
+import com.rfid.pdaapp.dialogs.EditeDialog;
 import com.rfid.pdaapp.utils.DeviceUtils;
 import com.rfid.pdaapp.utils.LogUtils;
 
@@ -46,7 +47,6 @@ public class HWScanActivity extends BaseActivity {
     LinearLayout scanAutoLayout;
     @BindView(R.id.iv_flash)
     ImageView ivFlash;
-    private Context mContext;
     private int mScreenWidth;
     private int mScreenHeight;
     private int SCAN_FRAME_SIZE = 240;
@@ -84,11 +84,23 @@ public class HWScanActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_open_light, R.id.iv_flash})
+    @OnClick({R.id.iv_open_light, R.id.iv_handle_input, R.id.iv_flash})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_open_light:
                 remoteView.switchLight();
+                break;
+            case R.id.iv_handle_input:
+                new EditeDialog(mContext, "请输入", new EditeDialog.EditInterface() {
+                    @Override
+                    public void onClick(String s) {
+                        if (TextUtils.isEmpty(s)) {
+                            finish();
+                        } else {
+                            backResult(s);
+                        }
+                    }
+                });
                 break;
             case R.id.iv_flash:
                 //跳转到图片选择界面去选择一张二维码图片
@@ -176,7 +188,7 @@ public class HWScanActivity extends BaseActivity {
             // data是Intent类型，data.getData是待扫描的条码图片Uri。
             Bitmap bitmap = null;
             try {
-               // bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                // bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
                 InputStream inputStream = getContentResolver().openInputStream(data.getData());
                 bitmap = BitmapFactory.decodeStream(inputStream);
             } catch (IOException e) {
