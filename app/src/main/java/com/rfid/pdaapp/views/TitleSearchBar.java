@@ -15,17 +15,10 @@ import androidx.annotation.Nullable;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.utils.Strings;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class TitleSearchBar extends LinearLayout {
-    @BindView(R.id.iv_back)
     public ImageView ivBack;
-    @BindView(R.id.search_edit)
     public ClearEditText searchEdit;
-    @BindView(R.id.tv_search)
     public TextView tvSearch;
-    @BindView(R.id.ll_title_search_bar)
     LinearLayout llTitleSearchBar;
     private View mInflate;
     public Context mContext;
@@ -48,7 +41,10 @@ public class TitleSearchBar extends LinearLayout {
         super(context, attrs, defStyleAttr);
         mContext = context;
         mInflate = View.inflate(context, R.layout.title_search_bar, this);
-        ButterKnife.bind(mInflate);
+        ivBack = mInflate.findViewById(R.id.iv_back);
+        searchEdit = mInflate.findViewById(R.id.search_edit);
+        tvSearch = mInflate.findViewById(R.id.tv_search);
+        llTitleSearchBar = mInflate.findViewById(R.id.ll_title_search_bar);
         init(attrs, defStyleAttr);
     }
 
@@ -56,7 +52,7 @@ public class TitleSearchBar extends LinearLayout {
     private int default_right_text_color = getResources().getColor(R.color.white);
     private int backgroundColor = default_bg;//背景颜色，默认白色
     private int rightTextColor = default_right_text_color;//右边文字的颜色，默认白色
-    private String rightText = "搜索";//右边的文字 默认搜索
+    private String rightText;//右边的文字 默认搜索
 
 
     private void init(AttributeSet attrs, int defStyleAttr) {
@@ -64,7 +60,7 @@ public class TitleSearchBar extends LinearLayout {
         if (typedArray != null) {
             backgroundColor = typedArray.getColor(R.styleable.TitleSearchBar_background_color, default_bg);
             rightTextColor = typedArray.getColor(R.styleable.TitleSearchBar_right_text_color, default_right_text_color);
-            rightText = typedArray.getString(R.styleable.TitleSearchBar_right_text);
+            rightText = TextUtils.isEmpty(typedArray.getString(R.styleable.TitleSearchBar_right_text)) ? "搜索" : typedArray.getString(R.styleable.TitleSearchBar_right_text);
             typedArray.recycle();
         }
     }

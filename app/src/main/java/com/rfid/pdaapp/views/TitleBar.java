@@ -15,21 +15,12 @@ import androidx.annotation.Nullable;
 
 import com.rfid.pdaapp.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class TitleBar extends LinearLayout {
-    @BindView(R.id.image_titlebar_back)
     public ImageView mImageTitlebarBack;
-    @BindView(R.id.title)
     TextView mTitle;
-    @BindView(R.id.tv_right)
     public TextView mTvRight;
-    @BindView(R.id.iv_right_second)
     public ImageView mIvRightSecond;
-    @BindView(R.id.iv_right_first)
     public ImageView mIvRightFirst;
-    @BindView(R.id.rl_container)
     RelativeLayout mRlContainer;
     private View mInflate;
     public Context mContext;
@@ -71,7 +62,12 @@ public class TitleBar extends LinearLayout {
         super(context, attrs, defStyleAttr);
         mContext = context;
         mInflate = View.inflate(context, R.layout.titlebar, this);
-        ButterKnife.bind(mInflate);
+        mImageTitlebarBack = mInflate.findViewById(R.id.image_titlebar_back);
+        mTitle = mInflate.findViewById(R.id.title);
+        mTvRight = mInflate.findViewById(R.id.tv_right);
+        mIvRightSecond = mInflate.findViewById(R.id.iv_right_second);
+        mIvRightFirst = mInflate.findViewById(R.id.iv_right_first);
+        mRlContainer = mInflate.findViewById(R.id.rl_container);
         init(attrs, defStyleAttr);
     }
 
