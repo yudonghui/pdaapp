@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.activity.change.StockChangeActivity;
+import com.rfid.pdaapp.activity.puthouse.WarehouseActivity;
 import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.SpaceItemDecoration;
@@ -75,7 +76,7 @@ public class MainActivity extends BaseActivity {
                                 startActivity(StockAdjustActivity.class);
                                 break;
                             case Constant.HOME_SHRK://收货入库
-                                startActivity(StockAdjustActivity.class);
+                                startActivity(WarehouseActivity.class);
                                 break;
                         }
 
