@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PdaApp</string>
+    <string name="app_name">WMS系统</string>
 
     <string name="hint_default">请输入内容</string>
 </resources>
