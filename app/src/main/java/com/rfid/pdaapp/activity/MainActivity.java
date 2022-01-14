@@ -16,9 +16,12 @@ import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.SpaceItemDecoration;
 import com.rfid.pdaapp.common.base.BaseActivity;
 import com.rfid.pdaapp.common.network.HttpClient;
+import com.rfid.pdaapp.common.updateapp.CustomUpdateParser;
+import com.rfid.pdaapp.common.updateapp.CustomUpdatePrompter;
 import com.rfid.pdaapp.entitys.HomeEntity;
 import com.rfid.pdaapp.utils.Strings;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.xuexiang.xupdate.XUpdate;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -52,6 +55,7 @@ public class MainActivity extends BaseActivity {
         requestPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        checkUpdate();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
         rvHome.setLayoutManager(gridLayoutManager);
         rvHome.addItemDecoration(new SpaceItemDecoration(10, 10));
@@ -123,4 +127,11 @@ public class MainActivity extends BaseActivity {
         mHomeAdapter.notifyDataSetChanged();
     }
 
+    private void checkUpdate() {
+        XUpdate.newBuild(this)
+                .updateUrl(Constant.UPDATE_URL)
+                .updateParser(new CustomUpdateParser())
+                .updatePrompter(new CustomUpdatePrompter(this))
+                .update();
+    }
 }

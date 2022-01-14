@@ -97,4 +97,7 @@ dependencies {
     implementation 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
     //华为扫码功能
     implementation 'com.huawei.hms:scan:2.2.0.300'
+    //工具类
+    implementation 'com.blankj:utilcode:1.23.5'
+    implementation 'com.zhy:okhttputils:2.6.2'
 }
