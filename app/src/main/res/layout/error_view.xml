@@ -10,6 +10,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="暂无数据"
-        android:textColor="@color/gray_50"
+        android:textColor="@color/gray_txt"
         android:textSize="@dimen/dp_middle_2" />
 </LinearLayout>

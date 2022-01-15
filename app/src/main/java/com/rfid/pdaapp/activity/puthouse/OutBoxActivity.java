@@ -3,6 +3,7 @@ package com.rfid.pdaapp.activity.puthouse;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -26,33 +27,54 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
- * Created by ydh on 2022/1/13
+ * Created by ydh on 2022/1/15
  * 退库
  */
-public class OutStockActivity extends BaseActivity {
+public class OutBoxActivity extends BaseActivity {
 
     @BindView(R.id.tv_title)
     TitleBar tvTitle;
     @BindView(R.id.tv_out_stock_num)
     TextView tvOutStockNum;
-    @BindView(R.id.tv_total_num)
-    TextView tvTotalNum;
+    @BindView(R.id.ll_box_title)
+    LinearLayout llBoxTitle;
     @BindView(R.id.rv_data)
     RecyclerView rvData;
+    @BindView(R.id.tv_product_num)
+    TextView tvProductNum;
+    @BindView(R.id.tv_clear)
+    TextView tvClear;
+    @BindView(R.id.tv_confirm)
+    TextView tvConfirm;
     List<Map<String, Object>> mDataList = new ArrayList<>();
     private CommonAdapter<Map<String, Object>> mCommonAdapter;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_out_stock;
+        return R.layout.activity_out_box;
     }
 
     @Override
     protected void init(Bundle savedInstanceState) {
         initAdapter();
+        initListener();
         initData();
+    }
+
+    @OnClick({R.id.tv_clear, R.id.tv_confirm})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_clear:
+                break;
+            case R.id.tv_confirm:
+                break;
+        }
+    }
+
+    private void initListener() {
         tvTitle.setListener(new TitleBar.TextListener() {
             @Override
             public void onClick(TextView textView) {
@@ -62,16 +84,12 @@ public class OutStockActivity extends BaseActivity {
     }
 
     private void initAdapter() {
-        mCommonAdapter = new CommonAdapter<Map<String, Object>>(mContext, R.layout.item_out_stock, mDataList) {
+        mCommonAdapter = new CommonAdapter<Map<String, Object>>(mContext, R.layout.item_out_box, mDataList) {
 
             @Override
-            protected void convert(ViewHolder holder, Map<String, Object> stringObjectMap, int position) {
-                holder.setOnClickListener(R.id.ll_content, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(OutBoxActivity.class);
-                    }
-                });
+            protected void convert(ViewHolder viewHolder, Map<String, Object> item, int position) {
+                viewHolder.setText(R.id.tv_code, (String) item.get("code"));
+                viewHolder.setText(R.id.tv_num, item.get("num") + "");
             }
         };
         rvData.setLayoutManager(new LinearLayoutManager(mContext));
@@ -82,7 +100,10 @@ public class OutStockActivity extends BaseActivity {
     private void initData() {
         mDataList.clear();
         for (int i = 0; i < 10; i++) {
-            mDataList.add(new HashMap<>());
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("code", "T4567890999");
+            map.put("num", i + 1);
+            mDataList.add(map);
         }
         mCommonAdapter.notifyDataSetChanged();
     }

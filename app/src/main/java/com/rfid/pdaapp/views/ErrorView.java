@@ -48,7 +48,7 @@ public class ErrorView extends LinearLayout {
     private void init(AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.ErrorView);
         if (typedArray != null) {
-            hintTextColor = typedArray.getColor(R.styleable.ErrorView_hint_text_color, getResources().getColor(R.color.gray_50));
+            hintTextColor = typedArray.getColor(R.styleable.ErrorView_hint_text_color, getResources().getColor(R.color.gray_txt));
             hintText = typedArray.getString(R.styleable.ErrorView_hint_text);
             typedArray.recycle();
         }
