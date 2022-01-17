@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_in_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="入库单号:  "
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_in_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RK2345678FTGBS"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_creat_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="创建日期:  "
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_creat_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2021-12-23"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_upper_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="上架仓库:  "
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_upper_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="哈芙琳自由仓"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_supplier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="供应商:  "
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_supplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="江苏哈芙琳服装有限公司"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="备注:  "
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="这个是备注内容是打发斯蒂芬爱上对方就爱上了对方就爱上了对方阿斯顿"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:text="上架记录"
+            android:textColor="@color/color_theme"
+            android:textSize="@dimen/dp_normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/tv_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_red_20"
+                android:paddingLeft="15dp"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="8dp"
+                android:text="完成任务"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_normal" />
+
+            <TextView
+                android:id="@+id/tv_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="操作人：demo001"
+                android:textColor="@color/gray_txt"
+                android:textSize="@dimen/dp_small" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="接收时间：2022-12-12 19:45:23"
+                android:textColor="@color/gray_txt"
+                android:textSize="@dimen/dp_small" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -70,7 +70,8 @@ public class ErrorView extends LinearLayout {
         mTvHintView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onClick(v);
+                if (mListener != null)
+                    mListener.onClick(v);
             }
         });
     }

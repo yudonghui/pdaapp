@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -97,13 +96,6 @@ public class BigGoodsInActivity extends BaseActivity {
         }
         mBigGoodsAdapter.notifyDataSetChanged();
         stopRefresh(refreshLayout);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
 }

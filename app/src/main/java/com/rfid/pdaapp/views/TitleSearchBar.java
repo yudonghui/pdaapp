@@ -3,7 +3,9 @@ package com.rfid.pdaapp.views;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,11 +25,15 @@ public class TitleSearchBar extends LinearLayout {
     private View mInflate;
     public Context mContext;
     private TextListener mTvListener;
+    private EditeListener mEtListener;
 
     public void setListener(TextListener mTvListener) {
         this.mTvListener = mTvListener;
     }
 
+    public void addTextChangedListener(EditeListener mEtListener) {
+        this.mEtListener = mEtListener;
+    }
 
     public TitleSearchBar(Context context) {
         this(context, null);
@@ -92,6 +98,26 @@ public class TitleSearchBar extends LinearLayout {
                 }
             });
         }
+        if (searchEdit != null) {
+            searchEdit.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (mEtListener != null) {
+                        mEtListener.afterTextChanged(s.toString());
+                    }
+                }
+            });
+        }
     }
 
     public void setBackground(int backgroundColor) {
@@ -125,7 +151,11 @@ public class TitleSearchBar extends LinearLayout {
     }
 
     public interface TextListener {
+
         void onClick(TextView textView);
     }
 
+    public interface EditeListener {
+        void afterTextChanged(String s);
+    }
 }

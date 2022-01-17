@@ -19,4 +19,13 @@ public interface Constant {
     int HOME_KWYK = 1;//库位移位
     int HOME_KWTZ = 2;//库位调整
     int HOME_SHRK = 3;//收货入库
+    int HOME_KWSJ = 4;//库位上架
+    /**
+     * 库位上架
+     */
+    int UPPER_PTSJ = 0;//普通上架
+    int UPPER_JKSJ = 1;//减库上架
+    int UPPER_JGSJ = 2;//加工上架
+    int UPPER_DHTHSJ = 3;//大货退货上架
+    int UPPER_SDCSHSJ = 4;//锁定仓收货上架
 }

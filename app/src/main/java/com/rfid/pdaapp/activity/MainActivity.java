@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.activity.change.StockChangeActivity;
 import com.rfid.pdaapp.activity.puthouse.WarehouseActivity;
+import com.rfid.pdaapp.activity.upper.StockUpperActivity;
 import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.SpaceItemDecoration;
@@ -20,7 +21,6 @@ import com.rfid.pdaapp.common.updateapp.CustomUpdateParser;
 import com.rfid.pdaapp.common.updateapp.CustomUpdatePrompter;
 import com.rfid.pdaapp.entitys.HomeEntity;
 import com.rfid.pdaapp.utils.Strings;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xupdate.XUpdate;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -40,8 +40,6 @@ public class MainActivity extends BaseActivity {
     RecyclerView rvHome;
     @BindView(R.id.tv_quite)
     TextView tvQuite;
-    @BindView(R.id.refrashlayout)
-    SmartRefreshLayout refrashlayout;
     private CommonAdapter<HomeEntity> mHomeAdapter;
     private ArrayList<HomeEntity> mHomeList = new ArrayList<>();
 
@@ -81,6 +79,9 @@ public class MainActivity extends BaseActivity {
                                 break;
                             case Constant.HOME_SHRK://收货入库
                                 startActivity(WarehouseActivity.class);
+                                break;
+                            case Constant.HOME_KWSJ://库位上架
+                                startActivity(StockUpperActivity.class);
                                 break;
                         }
 
@@ -124,6 +125,7 @@ public class MainActivity extends BaseActivity {
         mHomeList.add(new HomeEntity("库存移库", Constant.HOME_KWYK, R.drawable.shape_green_10));
         mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_green_10));
         mHomeList.add(new HomeEntity("收货入库", Constant.HOME_SHRK, R.drawable.shape_theme_10));
+        mHomeList.add(new HomeEntity("库位上架", Constant.HOME_KWSJ, R.drawable.shape_theme_10));
         mHomeAdapter.notifyDataSetChanged();
     }
 
