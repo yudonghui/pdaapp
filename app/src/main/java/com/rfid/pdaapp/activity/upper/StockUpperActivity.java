@@ -61,7 +61,7 @@ public class StockUpperActivity extends BaseActivity {
                                 startActivity(UpperFormActivity.class, bundle);
                                 break;
                             case Constant.UPPER_DHTHSJ://大货退货上架
-                                startActivity(UpperFormActivity.class);
+                                startActivity(UpperBigActivity.class);
                                 break;
                         }
 

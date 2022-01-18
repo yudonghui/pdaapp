@@ -1,9 +1,12 @@
 package com.rfid.pdaapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.rfid.pdaapp.R;
+import com.rfid.pdaapp.activity.upper.UpperDetailActivity;
 import com.rfid.pdaapp.common.Constant;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -40,5 +43,11 @@ public class UpperAdapter extends CommonAdapter<Map<String, Object>> {
         } else {
             holder.setVisible(R.id.ll_school, true);
         }
+        holder.setOnClickListener(R.id.ll_content, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, UpperDetailActivity.class));
+            }
+        });
     }
 }

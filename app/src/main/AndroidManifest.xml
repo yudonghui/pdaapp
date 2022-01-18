@@ -17,6 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.upper.UpperDetailActivity"></activity>
+        <activity android:name=".activity.upper.UpperBigActivity" />
         <activity android:name=".activity.upper.UpperFormActivity" />
         <activity android:name=".activity.upper.StockUpperActivity" />
         <activity android:name=".activity.puthouse.OutBoxActivity" />
