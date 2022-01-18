@@ -67,6 +67,6 @@
     </style>
 
     <style name="tablayout_text">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

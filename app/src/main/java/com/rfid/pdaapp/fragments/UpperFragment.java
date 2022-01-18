@@ -3,12 +3,15 @@ package com.rfid.pdaapp.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.adapters.UpperAdapter;
+import com.rfid.pdaapp.common.RecyclerViewDivider;
 import com.rfid.pdaapp.common.base.BaseFragment;
 import com.rfid.pdaapp.views.ErrorView;
-import com.rfid.pdaapp.views.SListView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -24,8 +27,8 @@ public class UpperFragment extends BaseFragment {
 
     @BindView(R.id.error_view)
     ErrorView errorView;
-    @BindView(R.id.lv_data)
-    SListView lvData;
+    @BindView(R.id.rv_data)
+    RecyclerView rvData;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
     private int type;
@@ -57,8 +60,10 @@ public class UpperFragment extends BaseFragment {
     }
 
     private void initAdapter() {
-        mUpperAdapter = new UpperAdapter(mContext, R.layout.item_upper, mDataList,type);
-        lvData.setAdapter(mUpperAdapter);
+        mUpperAdapter = new UpperAdapter(mContext, R.layout.item_upper, mDataList, type,meOrOther);
+        rvData.setLayoutManager(new LinearLayoutManager(mContext));
+        rvData.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 0.5, ContextCompat.getColor(mContext, R.color.color_divider)));
+        rvData.setAdapter(mUpperAdapter);
     }
 
     private void initListener() {

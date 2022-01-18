@@ -8,14 +8,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.List;
 
 /**
- * @author yudonghui
- * @date 2017/5/26
- * @describe May the Buddha bless bug-free!!!
+ * Created by ydh on 2022/1/18
  */
 public class FragmentAdapter extends FragmentPagerAdapter {
     private List<Fragment> list_fragment;                         //fragment列表
     private List<String> list_Title;                              //tab名的列表
-
 
 
     public FragmentAdapter(FragmentManager fm, List<Fragment> list_fragment, List<String> list_Title) {
