@@ -7,6 +7,16 @@ import java.util.List;
  */
 public class InventoryEntity {
     private String code;
+    private boolean isExpand = true;
+
+    public boolean isExpand() {
+        return isExpand;
+    }
+
+    public void setExpand(boolean expand) {
+        isExpand = expand;
+    }
+
     private List<InventoryFormEntity> list;
 
     public String getCode() {

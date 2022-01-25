@@ -1,6 +1,8 @@
 package com.rfid.pdaapp.activity.inventory;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -62,6 +64,8 @@ public class InventoryFormActivity extends BaseActivity {
             @Override
             protected void convert(ViewHolder holder, InventoryEntity inventoryEntity, int position) {
                 RecyclerView mRvChild = holder.getView(R.id.rv_child);
+                ImageView mIvAdd = holder.getView(R.id.iv_add);
+                ImageView mIvOpenClose = holder.getView(R.id.iv_open_close);
                 List<InventoryFormEntity> childList = inventoryEntity.getList() == null ? new ArrayList<>() : inventoryEntity.getList();
                 CommonAdapter<InventoryFormEntity> mChildAdapter = new CommonAdapter<InventoryFormEntity>(mContext, R.layout.item_inventory_form_child, childList) {
 
@@ -73,6 +77,36 @@ public class InventoryFormActivity extends BaseActivity {
                 mRvChild.setLayoutManager(new LinearLayoutManager(mContext));
                 mRvChild.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.VERTICAL, 0.5, ContextCompat.getColor(mContext, R.color.color_divider)));
                 mRvChild.setAdapter(mChildAdapter);
+                if (inventoryEntity.isExpand()) {
+                    mRvChild.setVisibility(View.VISIBLE);
+                    mIvAdd.setVisibility(View.VISIBLE);
+                    mIvOpenClose.setImageResource(R.mipmap.open_white);
+                } else {
+                    mRvChild.setVisibility(View.GONE);
+                    mIvAdd.setVisibility(View.GONE);
+                    mIvOpenClose.setImageResource(R.mipmap.close_white);
+                }
+                holder.setOnClickListener(R.id.ll_open_close, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        inventoryEntity.setExpand(!inventoryEntity.isExpand());
+                        if (inventoryEntity.isExpand()) {
+                            mRvChild.setVisibility(View.VISIBLE);
+                            mIvAdd.setVisibility(View.VISIBLE);
+                            mIvOpenClose.setImageResource(R.mipmap.open_white);
+                        } else {
+                            mRvChild.setVisibility(View.GONE);
+                            mIvAdd.setVisibility(View.GONE);
+                            mIvOpenClose.setImageResource(R.mipmap.close_white);
+                        }
+                    }
+                });
+                holder.setOnClickListener(R.id.tv_history, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(HistoryStockActivity.class);
+                    }
+                });
             }
         };
         rvData.setLayoutManager(new LinearLayoutManager(mContext));

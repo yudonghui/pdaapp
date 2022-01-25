@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.inventory.InventoryFormActivity"></activity>
+        <activity android:name=".activity.inventory.HistoryStockActivity"></activity>
+        <activity android:name=".activity.inventory.InventoryFormActivity" />
         <activity android:name=".activity.inventory.InventoryProductActivity" />
         <activity android:name=".activity.inventory.InventoryActivity" />
         <activity android:name=".activity.upper.UpperFormActivity" />
