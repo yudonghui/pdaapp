@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.activity.change.StockChangeActivity;
+import com.rfid.pdaapp.activity.inventory.InventoryActivity;
 import com.rfid.pdaapp.activity.puthouse.WarehouseActivity;
 import com.rfid.pdaapp.activity.upper.StockUpperActivity;
 import com.rfid.pdaapp.common.Constant;
@@ -83,6 +84,9 @@ public class MainActivity extends BaseActivity {
                             case Constant.HOME_KWSJ://库位上架
                                 startActivity(StockUpperActivity.class);
                                 break;
+                            case Constant.HOME_PD://盘点
+                                startActivity(InventoryActivity.class);
+                                break;
                         }
 
                     }
@@ -126,6 +130,7 @@ public class MainActivity extends BaseActivity {
         mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_green_10));
         mHomeList.add(new HomeEntity("收货入库", Constant.HOME_SHRK, R.drawable.shape_theme_10));
         mHomeList.add(new HomeEntity("库位上架", Constant.HOME_KWSJ, R.drawable.shape_theme_10));
+        mHomeList.add(new HomeEntity("盘点", Constant.HOME_PD, R.drawable.shape_green_10));
         mHomeAdapter.notifyDataSetChanged();
     }
 

@@ -20,6 +20,7 @@ public interface Constant {
     int HOME_KWTZ = 2;//库位调整
     int HOME_SHRK = 3;//收货入库
     int HOME_KWSJ = 4;//库位上架
+    int HOME_PD = 5;//盘点
     /**
      * 库位上架
      */
