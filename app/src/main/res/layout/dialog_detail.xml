@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_content"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_white_10"
     android:orientation="vertical">
 
     <LinearLayout
@@ -136,7 +135,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="80dp"
@@ -155,67 +155,4 @@
             android:textColor="@color/black"
             android:textSize="@dimen/dp_normal" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="10dp"
-            android:text="上架记录"
-            android:textColor="@color/color_theme"
-            android:textSize="@dimen/dp_normal" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="vertical"
-            android:paddingRight="10dp">
-
-            <TextView
-                android:id="@+id/tv_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_red_20"
-                android:paddingLeft="15dp"
-                android:paddingTop="8dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="8dp"
-                android:text="完成任务"
-                android:textColor="@color/white"
-                android:textSize="@dimen/dp_normal" />
-
-            <TextView
-                android:id="@+id/tv_operator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="操作人：demo001"
-                android:textColor="@color/gray_txt"
-                android:textSize="@dimen/dp_small" />
-
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="接收时间：2022-12-12 19:45:23"
-                android:textColor="@color/gray_txt"
-                android:textSize="@dimen/dp_small" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
 </LinearLayout>

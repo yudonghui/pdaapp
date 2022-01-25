@@ -15,7 +15,6 @@
     <color name="gray_65">#575757</color>
     <color name="gray_60">#858585</color>
     <color name="gray_txt">#A5A5A5</color>
-    <color name="gray_49">#c5c5c5</color>
     <color name="gray_48">#e5e5e5</color>
     <color name="gray_47">#f5f5f5</color>
     <color name="gray_47_5">#f1f1f1</color>
@@ -23,7 +22,7 @@
     <color name="gray_30">#e1e1e1</color>
     <color name="gray_ccc">#cccccc</color>
     <color name="hint_color">#c5c5c5</color>
-    <color name="color_divider">#D9D9D9</color>
+    <color name="color_divider">#c5c5c5</color>
     <color name="color_red">#FF0000</color>
     <color name="color_f27070">#F27070</color>
     <color name="color_orange">#F28D47</color>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_in_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:text="入库单号: RKD56678880000"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_normal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_cust_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:text="客户名称： 杭州市美好区人大附中学校"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_normal" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="理货仓库： demo001"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_normal" />
+
+    <TextView
+        android:id="@+id/tv_school"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="学校： 河南大学分校"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_normal" />
+
+    <TextView
+        android:id="@+id/tv_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="备注： 胜多负少的方式的"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_normal" />
+
+    <TextView
+        android:id="@+id/tv_bill_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="销售单号： XSD412642222222"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_look"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="查看清单"
+            android:textColor="@color/color_theme"
+            android:textSize="@dimen/dp_normal" />
+
+        <TextView
+            android:id="@+id/tv_receive_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_theme_20"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="接收任务"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_normal" />
+    </LinearLayout>
+
+</LinearLayout>

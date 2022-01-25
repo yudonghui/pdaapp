@@ -62,7 +62,7 @@ public class UpperFragment extends BaseFragment {
     private void initAdapter() {
         mUpperAdapter = new UpperAdapter(mContext, R.layout.item_upper, mDataList, type,meOrOther);
         rvData.setLayoutManager(new LinearLayoutManager(mContext));
-        rvData.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 0.5, ContextCompat.getColor(mContext, R.color.color_divider)));
+        rvData.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 1, ContextCompat.getColor(mContext, R.color.color_divider)));
         rvData.setAdapter(mUpperAdapter);
     }
 
