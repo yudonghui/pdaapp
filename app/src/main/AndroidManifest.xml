@@ -17,11 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.inventory.HistoryStockActivity"></activity>
+        <activity android:name=".activity.puthouse.StockPutActivity"></activity>
+        <activity android:name=".activity.inventory.HistoryStockActivity" />
         <activity android:name=".activity.inventory.InventoryFormActivity" />
         <activity android:name=".activity.inventory.InventoryProductActivity" />
         <activity android:name=".activity.inventory.InventoryActivity" />
         <activity android:name=".activity.upper.UpperFormActivity" />
+        <activity android:name=".activity.upper.UpperDetailActivity" />
+        <activity android:name=".activity.upper.UpperBigActivity" />
         <activity android:name=".activity.upper.StockUpperActivity" />
         <activity android:name=".activity.puthouse.OutBoxActivity" />
         <activity android:name=".activity.puthouse.OutStockActivity" />

@@ -1,5 +1,6 @@
 package com.rfid.pdaapp.common.network;
 
+import com.rfid.pdaapp.common.ResponeEntity;
 import com.rfid.pdaapp.entitys.LoginEntity;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public interface ServersApi {
     @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc")
     Call<ResponseBody> locationFormStr(@Body RequestBody body);
 
+    //收货入库 收货上架保存
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Save.common.kdsvc")
+    Call<ResponeEntity> savePutStockBox(@Body RequestBody body);
    /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
     Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);
 

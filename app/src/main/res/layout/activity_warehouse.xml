@@ -12,17 +12,37 @@
         android:layout_height="45dp"
         app:title="收货入库" />
 
-    <TextView
-        android:id="@+id/tv_big_goods"
-        android:layout_width="160dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/shape_theme_10"
-        android:gravity="center"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
-        android:text="大货退货入库"
-        android:textColor="@color/white"
-        android:textSize="@dimen/dp_big" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_big_goods"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_theme_10"
+            android:gravity="center"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:text="大货退货入库"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_big" />
+
+        <TextView
+            android:id="@+id/tv_stock_put"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_green_10"
+            android:gravity="center"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:text="库位上架"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_big" />
+    </LinearLayout>
+
 
 </LinearLayout>

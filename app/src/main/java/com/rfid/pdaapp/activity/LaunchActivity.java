@@ -46,7 +46,8 @@ public class LaunchActivity extends BaseActivity {
 
     private void login(String account, String password) {
         HashMap<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("acctID", "61b9b54d631462");
+        //paramsMap.put("acctID", "61b9b54d631462");
+        paramsMap.put("acctID", "6172cc88ff4604");
         paramsMap.put("username", account);
         paramsMap.put("password", password);
         paramsMap.put("lcid", "2052");

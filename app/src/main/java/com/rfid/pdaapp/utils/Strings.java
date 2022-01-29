@@ -5,6 +5,8 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 
+import com.rfid.pdaapp.common.ErrorsEntity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +42,7 @@ public class Strings {
         if (string instanceof String)
             return TextUtils.isEmpty((String) string) ? "-" : (String) string;
         else if (string instanceof Double) {
-            return (int)(Double.parseDouble(string + "")) + "";
+            return (int) (Double.parseDouble(string + "")) + "";
         }
         return string.toString();
     }
@@ -198,5 +200,14 @@ public class Strings {
             map.put(array[i], list.get(i));
         }
         return map;
+    }
+
+    public static String getErrorMessage(List<ErrorsEntity> list) {
+        if (list == null || list.size() == 0) return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            stringBuilder.append(list.get(i).getMessage() + "\n");
+        }
+        return stringBuilder.toString();
     }
 }

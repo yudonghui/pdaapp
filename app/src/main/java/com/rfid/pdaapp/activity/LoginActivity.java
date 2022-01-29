@@ -93,7 +93,8 @@ public class LoginActivity extends BaseActivity {
             return;
         }
         HashMap<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("acctID", "61b9b54d631462");
+        // paramsMap.put("acctID", "61b9b54d631462");
+        paramsMap.put("acctID", "6172cc88ff4604");
         paramsMap.put("username", username);
         paramsMap.put("password", password);
         paramsMap.put("lcid", "2052");

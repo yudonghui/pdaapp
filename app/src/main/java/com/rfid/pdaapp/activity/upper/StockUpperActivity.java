@@ -21,6 +21,11 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
+/**
+ * Created by ydh on 2022/1/19
+ * 库位上架
+ */
+
 public class StockUpperActivity extends BaseActivity {
 
 
