@@ -39,6 +39,12 @@ public interface ServersApi {
     //收货入库 收货上架保存
     @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Save.common.kdsvc")
     Call<ResponeEntity> savePutStockBox(@Body RequestBody body);
+
+    /**
+     * 零售波次理货单列表
+     */
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc")
+    Call<ResponseBody> manageGoodsForm(@Body RequestBody body);
    /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
     Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);
 

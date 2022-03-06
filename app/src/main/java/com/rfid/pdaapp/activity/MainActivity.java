@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rfid.pdaapp.R;
-import com.rfid.pdaapp.activity.change.StockChangeActivity;
-import com.rfid.pdaapp.activity.inventory.InventoryActivity;
+import com.rfid.pdaapp.activity.goods.ManageGoodsActivity;
 import com.rfid.pdaapp.activity.puthouse.WarehouseActivity;
-import com.rfid.pdaapp.activity.upper.StockUpperActivity;
 import com.rfid.pdaapp.common.Constant;
 import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.SpaceItemDecoration;
@@ -73,19 +71,22 @@ public class MainActivity extends BaseActivity {
                                 startActivity(StockActivity.class);
                                 break;
                             case Constant.HOME_KWYK://库位移库
-                                startActivity(StockChangeActivity.class);
+                                // startActivity(StockChangeActivity.class);
                                 break;
                             case Constant.HOME_KWTZ://库位调整
-                                startActivity(StockAdjustActivity.class);
+                                // startActivity(StockAdjustActivity.class);
                                 break;
                             case Constant.HOME_SHRK://收货入库
                                 startActivity(WarehouseActivity.class);
                                 break;
                             case Constant.HOME_KWSJ://库位上架
-                                startActivity(StockUpperActivity.class);
+                                // startActivity(StockUpperActivity.class);
                                 break;
                             case Constant.HOME_PD://盘点
-                                startActivity(InventoryActivity.class);
+                                // startActivity(InventoryActivity.class);
+                                break;
+                            case Constant.HOME_MANAGE_GOODS://波次理货
+                                startActivity(ManageGoodsActivity.class);
                                 break;
                         }
 
@@ -126,11 +127,12 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         mHomeList.add(new HomeEntity("库存查询", Constant.HOME_KCCX, R.drawable.shape_theme_10));
-        mHomeList.add(new HomeEntity("库存移库", Constant.HOME_KWYK, R.drawable.shape_green_10));
-        mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_green_10));
+        // mHomeList.add(new HomeEntity("库存移库", Constant.HOME_KWYK, R.drawable.shape_green_10));
+        // mHomeList.add(new HomeEntity("库位调整", Constant.HOME_KWTZ, R.drawable.shape_green_10));
         mHomeList.add(new HomeEntity("收货入库", Constant.HOME_SHRK, R.drawable.shape_theme_10));
-        mHomeList.add(new HomeEntity("库位上架", Constant.HOME_KWSJ, R.drawable.shape_theme_10));
-        mHomeList.add(new HomeEntity("盘点", Constant.HOME_PD, R.drawable.shape_green_10));
+        // mHomeList.add(new HomeEntity("库位上架", Constant.HOME_KWSJ, R.drawable.shape_theme_10));
+        //  mHomeList.add(new HomeEntity("盘点", Constant.HOME_PD, R.drawable.shape_green_10));
+        mHomeList.add(new HomeEntity("发货现货理货", Constant.HOME_MANAGE_GOODS, R.drawable.shape_green_10));
         mHomeAdapter.notifyDataSetChanged();
     }
 

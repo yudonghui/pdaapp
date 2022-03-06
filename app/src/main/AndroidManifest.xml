@@ -17,7 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.puthouse.StockPutActivity"></activity>
+        <activity android:name=".activity.goods.CbLhActivity"></activity>
+        <activity android:name=".activity.goods.XhLhActivity" />
+        <activity android:name=".activity.goods.XhFhLhHomeActivity" />
+        <activity android:name=".activity.goods.ManageGoodsActivity" />
+        <activity android:name=".activity.goods.XhFhLhActivity" />
+        <activity android:name=".activity.puthouse.StockPutActivity" />
         <activity android:name=".activity.inventory.HistoryStockActivity" />
         <activity android:name=".activity.inventory.InventoryFormActivity" />
         <activity android:name=".activity.inventory.InventoryProductActivity" />

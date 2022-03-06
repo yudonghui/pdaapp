@@ -21,6 +21,7 @@ public interface Constant {
     int HOME_SHRK = 3;//收货入库
     int HOME_KWSJ = 4;//库位上架
     int HOME_PD = 5;//盘点
+    int HOME_MANAGE_GOODS = 6;//波次理货
     /**
      * 库位上架
      */

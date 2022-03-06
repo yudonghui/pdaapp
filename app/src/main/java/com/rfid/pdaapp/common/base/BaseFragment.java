@@ -17,7 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
 import com.rfid.pdaapp.R;
+import com.rfid.pdaapp.activity.LoginActivity;
+import com.rfid.pdaapp.entitys.ErrorEntity;
 import com.rfid.pdaapp.utils.LogUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
@@ -30,7 +33,7 @@ import retrofit2.Call;
 
 
 /**
- *Created by ydh on 2022/1/17
+ * Created by ydh on 2022/1/17
  */
 public abstract class BaseFragment extends Fragment {
     protected Context mContext;
@@ -121,10 +124,41 @@ public abstract class BaseFragment extends Fragment {
         startActivity(intent);
     }
 
-    protected void stopOver(SmartRefreshLayout mRefreshLayout) {
-        if (mRefreshLayout != null) {
-            mRefreshLayout.finishLoadMore();
-            mRefreshLayout.finishRefresh();
+    public void stopRefresh(SmartRefreshLayout refreshLayout) {
+        if (refreshLayout != null) {
+            refreshLayout.finishRefresh();
+            refreshLayout.finishLoadMore();
+        }
+    }
+
+    /**
+     * 错误代码MsgCode说明
+     * 0：默认
+     * 1：上下文丢失
+     * 2：没有权限
+     * 3：操作标识为空
+     * 4：异常
+     * 5：单据标识为空
+     * 6：数据库操作失败
+     * 7：许可错误
+     * 8：参数错误
+     * 9：指定字段/值不存在
+     * 10：未找到对应数据
+     * 11：验证失败
+     * 12：不可操作
+     * 13：网控冲突
+     */
+    public void errorHandl(String body) {
+        String substring = body.substring(2, body.length() - 2);
+        ErrorEntity errorEntity = new Gson().fromJson(substring, ErrorEntity.class);
+        ErrorEntity.ResultDTO.ResponseStatusDTO responseStatus = errorEntity.getResult().getResponseStatus();
+        int errorCode = responseStatus.getErrorCode();
+        if (errorCode == 500) {
+            String message = responseStatus.getErrors().get(0).getMessage();
+            if ("会话信息已丢失，请重新登录".equals(message)) {
+                startActivity(LoginActivity.class);
+                getActivity().finish();
+            }
         }
     }
 

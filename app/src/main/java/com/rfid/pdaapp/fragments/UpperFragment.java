@@ -82,7 +82,7 @@ public class UpperFragment extends BaseFragment {
             HashMap<String, Object> map = new HashMap<>();
             mDataList.add(map);
         }
-        stopOver(refreshLayout);
+        stopRefresh(refreshLayout);
         mUpperAdapter.notifyDataSetChanged();
     }
 }
