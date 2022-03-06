@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.common.base.BaseActivity;
+import com.rfid.pdaapp.utils.CommonUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,11 +31,13 @@ public class WarehouseActivity extends BaseActivity {
     protected void init(Bundle savedInstanceState) {
 
     }
+
     @OnClick({R.id.tv_big_goods, R.id.tv_stock_put})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_big_goods:
-                startActivity(BigGoodsInActivity.class);
+                CommonUtil.showToast("开发中......");
+                // startActivity(BigGoodsInActivity.class);
                 break;
             case R.id.tv_stock_put:
                 startActivity(StockPutActivity.class);
