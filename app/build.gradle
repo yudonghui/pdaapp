@@ -95,9 +95,12 @@ dependencies {
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'
     //通讯录
     implementation 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
+    //侧滑菜单
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     //华为扫码功能
     implementation 'com.huawei.hms:scan:2.2.0.300'
     //工具类
     implementation 'com.blankj:utilcode:1.23.5'
     implementation 'com.zhy:okhttputils:2.6.2'
+
 }

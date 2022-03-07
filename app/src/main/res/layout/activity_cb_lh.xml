@@ -11,7 +11,6 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        app:right_text="摄像头"
         app:title="波次理货" />
 
     <LinearLayout
@@ -98,7 +97,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="拣货库位"
             android:textColor="@color/black"
@@ -107,6 +106,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="商品编码"
@@ -116,6 +116,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="扫描数"
@@ -123,8 +125,85 @@
             android:textSize="@dimen/dp_normal" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_data"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/shape_theme_10"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="新增"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品总数："
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/dp_normal" />
+
+            <TextView
+                android:id="@+id/tv_total_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:textColor="@color/color_red"
+                android:textSize="@dimen/dp_normal" />
+
+            <TextView
+                android:id="@+id/tv_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/color_red"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="清除"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_normal" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/color_theme"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_normal" />
+        </LinearLayout>
+    </FrameLayout>
+
+
 </LinearLayout>

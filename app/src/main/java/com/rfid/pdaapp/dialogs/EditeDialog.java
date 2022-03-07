@@ -5,6 +5,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,10 +26,14 @@ public class EditeDialog {
         this(mContext, "", title, mListener);
     }
 
-    /**
-     * @param
-     */
     public EditeDialog(Context mContext, String content, String title, final EditInterface mListener) {
+        this(mContext, content, 2, title, mListener);
+    }
+
+    /**
+     * @param mode 1 输入数字  2 输入备注
+     */
+    public EditeDialog(Context mContext, String content, int mode, String title, final EditInterface mListener) {
         mHintDialog = new BaseDialog(mContext, R.style.HintDialogInput);
         mHintDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         view = View.inflate(mContext, R.layout.dialog_edite, null);
@@ -40,6 +45,11 @@ public class EditeDialog {
         mEtContent.setSingleLine(false);//改变默认的单行模式
         mEtContent.setHorizontallyScrolling(false);//水平滚动设置为False
         mTitle.setText(title);
+        if (mode == 1) {
+            mEtContent.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
+        } else if (mode == 2) {
+            mEtContent.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        }
         if (TextUtils.isEmpty(content)) {
             mEtContent.setText("");
         } else {

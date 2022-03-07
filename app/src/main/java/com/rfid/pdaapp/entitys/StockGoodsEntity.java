@@ -3,7 +3,10 @@ package com.rfid.pdaapp.entitys;
 public class StockGoodsEntity {
     private String stock;
     private String goods;
-    private int num;
+    private int num = 0;
+
+    public StockGoodsEntity() {
+    }
 
     public StockGoodsEntity(String stock) {
         this.stock = stock;

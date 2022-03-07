@@ -37,7 +37,7 @@ public class WarehouseActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_big_goods:
                 CommonUtil.showToast("开发中......");
-                // startActivity(BigGoodsInActivity.class);
+                startActivity(BigGoodsInActivity.class);
                 break;
             case R.id.tv_stock_put:
                 startActivity(StockPutActivity.class);
