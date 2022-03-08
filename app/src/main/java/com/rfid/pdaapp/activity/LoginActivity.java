@@ -107,9 +107,7 @@ public class LoginActivity extends BaseActivity {
                     LoginEntity body = response.body();
                     int loginResultType = body.getLoginResultType();
                     if (loginResultType == 1) {
-                        SPUtils.setCache(SPUtils.FILE_ACCOUNT, SPUtils.ACCOUNT, username);
-                        SPUtils.setCache(SPUtils.FILE_ACCOUNT, SPUtils.PASSWORD, password);
-                        SPUtils.setCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID, body.getKDSVCSessionId());
+                       SPUtils.setUserInfo(body,username,password);
                         startActivity(MainActivity.class);
                         finish();
                     } else if (loginResultType == 0) {

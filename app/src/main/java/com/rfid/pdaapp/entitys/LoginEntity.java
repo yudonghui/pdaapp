@@ -180,7 +180,7 @@ public class LoginEntity {
         private String DBid;
         private int DatabaseType;
         private String SessionId;
-        private int UserId;
+        private String UserId;
         private String UserName;
         private String CustomName;
         private String DisplayVersion;
@@ -239,11 +239,11 @@ public class LoginEntity {
             this.SessionId = SessionId;
         }
 
-        public int getUserId() {
+        public String getUserId() {
             return UserId;
         }
 
-        public void setUserId(int UserId) {
+        public void setUserId(String UserId) {
             this.UserId = UserId;
         }
 

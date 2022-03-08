@@ -61,7 +61,7 @@ public class LaunchActivity extends BaseActivity {
                     LoginEntity body = response.body();
                     int loginResultType = body.getLoginResultType();
                     if (loginResultType == 1) {
-                        SPUtils.setCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID, body.getKDSVCSessionId());
+                        SPUtils.setUserInfo(body, account, password);
                         startActivity(MainActivity.class);
                     } else if (loginResultType == 0) {
                         startActivity(LoginActivity.class);

@@ -3,6 +3,7 @@ package com.rfid.pdaapp.common;
 import android.content.SharedPreferences;
 
 import com.rfid.pdaapp.MyApplication;
+import com.rfid.pdaapp.entitys.LoginEntity;
 
 
 import static android.content.Context.MODE_PRIVATE;
@@ -22,6 +23,8 @@ public class SPUtils {
     public static final String FILE_USER = "cache_user";
     public static final String TOKEN = "token"; //用户token
     public static final String KD_SESSIONID = "kdservice-sessionid"; //
+    public static final String USER_ID = "user_id"; //
+    public static final String USER_NAME = "user_name"; //
 
     /**
      * 用于存储String类型的数据
@@ -71,5 +74,16 @@ public class SPUtils {
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
         editor.commit();
+    }
+
+    /**
+     * 保存客户登录人信息
+     */
+    public static void setUserInfo(LoginEntity body, String username, String password) {
+        SPUtils.setCache(SPUtils.FILE_ACCOUNT, SPUtils.ACCOUNT, username);
+        SPUtils.setCache(SPUtils.FILE_ACCOUNT, SPUtils.PASSWORD, password);
+        SPUtils.setCache(SPUtils.FILE_USER, SPUtils.KD_SESSIONID, body.getKDSVCSessionId());
+        SPUtils.setCache(SPUtils.FILE_USER, SPUtils.USER_ID, body.getContext().getUserId());
+        SPUtils.setCache(SPUtils.FILE_USER, SPUtils.USER_NAME, body.getContext().getUserName());
     }
 }

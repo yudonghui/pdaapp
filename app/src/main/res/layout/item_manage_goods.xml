@@ -87,7 +87,7 @@
         android:paddingRight="10dp">
 
         <TextView
-            android:id="@+id/tv_btn"
+            android:id="@+id/tv_finish_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_red_20"
@@ -97,7 +97,22 @@
             android:paddingBottom="8dp"
             android:text="完成任务"
             android:textColor="@color/white"
-            android:textSize="@dimen/dp_normal" />
+            android:textSize="@dimen/dp_normal"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_receive_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_theme_20"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="接收任务"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_normal"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_operator"

@@ -11,7 +11,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.adapters.ManageGoodsAdapter;
+import com.rfid.pdaapp.callback.PdaTwoInterface;
 import com.rfid.pdaapp.common.RecyclerViewDivider;
+import com.rfid.pdaapp.common.SPUtils;
 import com.rfid.pdaapp.common.base.BaseFragment;
 import com.rfid.pdaapp.common.network.HttpClient;
 import com.rfid.pdaapp.utils.CommonUtil;
@@ -83,10 +85,21 @@ public class ManageGoodsFragment extends BaseFragment {
     }
 
     private void initAdapter() {
-        mAdapter = new ManageGoodsAdapter(mContext, R.layout.item_manage_goods, mDataList);
+        mAdapter = new ManageGoodsAdapter(mContext, R.layout.item_manage_goods, mDataList,meOrOther);
         rvData.setLayoutManager(new LinearLayoutManager(mContext));
         rvData.addItemDecoration(new RecyclerViewDivider(LinearLayoutManager.HORIZONTAL, 1, ContextCompat.getColor(mContext, R.color.color_divider)));
         rvData.setAdapter(mAdapter);
+        mAdapter.setListener(new PdaTwoInterface() {
+            @Override
+            public void clickOne(int position) {
+
+            }
+
+            @Override
+            public void clickTwo(int position) {
+
+            }
+        });
     }
 
     private void initListener() {
@@ -113,7 +126,8 @@ public class ManageGoodsFragment extends BaseFragment {
         map.put("FormId", "STK_TRANSFERAPPLY");
         map.put("Limit", Limit);
         map.put("StartRow", StartRow);
-        map.put("FilterString", "FBillTypeID.FNUMBER='DBSQD11_SYS'");
+        map.put("FilterString", "FBillTypeID.FNUMBER='DBSQD11_SYS' and F_BRE_ZDRUserId='" +
+                (meOrOther == 0 ? SPUtils.getCache(SPUtils.FILE_USER, SPUtils.USER_ID) : "") + "'");
         map.put("OrderString", "");
         map.put("FieldKeys", Strings.getStrByArray(mFieldKeys));
         HashMap<String, Object> paramMap = new HashMap<>();
