@@ -45,10 +45,17 @@ public interface ServersApi {
      */
     @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc")
     Call<ResponseBody> manageGoodsForm(@Body RequestBody body);
-   /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
-    Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);
 
-  //判断是否客户是否出院了
+    /* @GET("mylike-crm/api/outbound/getBasDomainList.do")
+     Call<BaseEntity<BasePageEntity<BookbuildingEntity>>> getBasDomainList(@Query("domainNamespace") String domainNamespace);*/
+
+    /**
+     * 领取任务 完成任务 保存理货收集单
+     */
+    @POST("K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Save.common.kdsvc")
+    Call<ResponseBody> receiveOrFinishTask(@Body RequestBody body);
+
+   /* //判断是否客户是否出院了
     @POST("his-api/v1.0/zy/getIsInHos")
     Call<BaseNewEntity> judgeIsLeaveHospital(@Body RequestBody body);
     */

@@ -30,6 +30,7 @@ public class ManageGoodsActivity extends BaseActivity {
     private CommonAdapter<HomeEntity> mHomeAdapter;
     private ArrayList<HomeEntity> mHomeList = new ArrayList<>();
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_manage_goods;

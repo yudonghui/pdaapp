@@ -104,6 +104,9 @@ public class XhLhActivity extends BaseActivity {
                             public void onClick(View v) {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("FBillNo", FBillNo);
+                                bundle.putString("FID", FID);
+                                bundle.putString("F_HFL_SCH_FNAME", F_HFL_SCH_FNAME);
+                                bundle.putString("F_HFL_SCH_FNUMBER", F_HFL_SCH_FNUMBER);
                                 startActivity(CbLhActivity.class, bundle);
                             }
                         });

@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.rfid.pdaapp.R;
 import com.rfid.pdaapp.activity.goods.XhLhActivity;
 import com.rfid.pdaapp.callback.PdaTwoInterface;
-import com.rfid.pdaapp.utils.CommonUtil;
 import com.rfid.pdaapp.utils.Strings;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -36,6 +35,8 @@ public class ManageGoodsAdapter extends CommonAdapter<Map<String, Object>> {
         viewHolder.setText(R.id.tv_fbillno, Strings.getString(stringObjectMap.get("FBillNo")));
         viewHolder.setText(R.id.tv_fname, Strings.getString(stringObjectMap.get("F_HFL_SCH.FNAME")));
         viewHolder.setText(R.id.tv_fcreatedate, Strings.getString(stringObjectMap.get("FCREATEDATE")));
+        viewHolder.setText(R.id.tv_operator, "操作人：" + Strings.getStringSn(stringObjectMap.get("F_BRE_ZDRUSERID.FNAME")));
+        viewHolder.setText(R.id.tv_time, "接收时间：" + Strings.getStringSn(stringObjectMap.get("F_HFL_PDAZDSJ")));
         if (meOrOther == 0) {
             mTvFinishTask.setVisibility(View.VISIBLE);
             mTvReceiveTask.setVisibility(View.GONE);
@@ -43,12 +44,7 @@ public class ManageGoodsAdapter extends CommonAdapter<Map<String, Object>> {
             mTvFinishTask.setVisibility(View.GONE);
             mTvReceiveTask.setVisibility(View.VISIBLE);
         }
-        viewHolder.setOnClickListener(R.id.tv_btn, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CommonUtil.showToast("开发中......");
-            }
-        });
+
         viewHolder.setOnClickListener(R.id.ll_content, new View.OnClickListener() {
             @Override
             public void onClick(View v) {

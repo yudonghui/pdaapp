@@ -5,6 +5,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 
+import com.blankj.utilcode.util.ObjectUtils;
 import com.rfid.pdaapp.common.ErrorsEntity;
 
 import java.util.ArrayList;
@@ -24,7 +25,12 @@ public class Strings {
             return (String) string;
         return "";
     }
-
+    public static String getStringSn(Object string) {
+        if (string == null) return "无";
+        if (string instanceof String)
+            return (String) string;
+        return "无";
+    }
     public static String getStringS(String string) {
         return TextUtils.isEmpty(string) ? "暂无" : string;
     }
@@ -131,6 +137,22 @@ public class Strings {
         try {
             int anInt = Integer.parseInt(string);
             return anInt;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public static int getInt(Object string) {
+        if (ObjectUtils.isEmpty(string)) return 0;
+        try {
+            if (string instanceof Double) {
+                return (int) (double) string;
+            }
+            if (string instanceof Integer)
+                return (int) string;
+            if (string instanceof String)
+                return Integer.parseInt((String) string);
+            return 0;
         } catch (Exception e) {
             return 0;
         }
